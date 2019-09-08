@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Detail Item"
+        android:layout_centerHorizontal="true"
+        android:textAppearance="?android:textAppearanceLarge"
+        android:layout_marginTop="11dp"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_margin="14sp"
+        android:background="@drawable/side_profile_border" />
+
+    <RelativeLayout
+        android:id="@+id/content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="165dp"
+        android:background="@drawable/item_bg"
+        android:padding="22dp">
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="30dp"
+            android:orientation="vertical">
+
+            <EditText
+                android:layout_width="300dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:background="@drawable/item_bg_ntedt"
+                android:textSize="12dp"
+                android:paddingLeft="15dp"
+                android:hint="Nama Barang" />
+
+            <EditText
+                android:layout_width="300dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="13dp"
+                android:textSize="12dp"
+                android:background="@drawable/item_bg"
+                android:paddingLeft="15dp"
+                android:hint="Jumlah Item" />
+
+            <EditText
+                android:layout_width="300dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="13dp"
+                android:background="@drawable/item_bg"
+                android:textSize="12dp"
+                android:paddingLeft="15dp"
+                android:hint="Harga" />
+
+            <EditText
+                android:layout_width="300dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="13dp"
+                android:background="@drawable/item_bg"
+                android:textSize="12dp"
+                android:paddingLeft="15dp"
+                android:hint="Tanggal dimasukan" />
+
+            <EditText
+                android:layout_width="300dp"
+                android:layout_height="30dp"
+                android:background="@drawable/item_bg"
+                android:layout_gravity="center"
+                android:hint="Deskripsi/Keterangan"
+                android:textSize="12dp"
+                android:paddingLeft="15dp"
+                android:layout_marginTop="13dp"/>
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:src="@drawable/img_item"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="69dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/content"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/change_btn"
+            android:layout_width="136dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="20sp"
+            android:layout_gravity="center"
+            android:text="Change"
+            android:textColor="#3CB371"
+            android:background="@android:color/white" />
+
+        <Button
+            android:id="@+id/change_delete"
+            android:layout_width="136dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="20sp"
+            android:layout_gravity="center"
+            android:text="Delete"
+            android:textColor="#3CB371"
+            android:background="@android:color/white"
+            android:layout_centerHorizontal="true" />
+
+    </LinearLayout>
+
+
+
+
+</RelativeLayout>
