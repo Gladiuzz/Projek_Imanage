@@ -4,8 +4,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-
-
     <RelativeLayout
         android:id="@+id/content"
         android:layout_width="wrap_content"
@@ -93,25 +91,28 @@
         android:layout_below="@id/content"
         android:layout_centerHorizontal="true">
 
-        <Button
-            android:id="@+id/btn_yes"
+        <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/btn_transaction"
-            android:text="Yes"
-            android:textColor="#3CB371" />
-
-        <Button
-            android:id="@+id/btn_no"
+            android:id="@+id/Tjumlah"
+            android:text="Input Jumlah"/>
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="60dp"
-            android:layout_marginTop="20dp"
-            android:layout_toRightOf="@id/btn_yes"
+            android:textSize="20dp"
+            android:layout_below="@+id/Tjumlah"
+            android:layout_marginLeft="5dp"
+            android:text="Rp.???.000"
+            android:id="@+id/jumlah"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/jumlah"
+            android:layout_marginTop="30dp"
             android:background="@drawable/btn_transaction"
-            android:text="No"
-            android:textColor="#3CB371" />
+            android:text="Submit"
+            android:textColor="#3CB371"
+            android:layout_marginLeft="10dp"/>
 
     </RelativeLayout>
 

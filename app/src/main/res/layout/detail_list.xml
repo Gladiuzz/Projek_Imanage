@@ -1,129 +1,127 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Detail Item"
-        android:layout_centerHorizontal="true"
-        android:textAppearance="?android:textAppearanceLarge"
-        android:layout_marginTop="11dp"/>
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_margin="14sp"
-        android:background="@drawable/side_profile_border" />
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical">
 
     <RelativeLayout
-        android:id="@+id/content"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/layout_addGambar"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="165dp"
-        android:background="@drawable/item_bg"
-        android:padding="22dp">
+        android:layout_marginTop="30dp"
+        android:clickable="true">
 
-
-        <LinearLayout
+        <ImageView
+            android:id="@+id/img_barang"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="30dp"
-            android:orientation="vertical">
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_add_a_photo_black_24dp" />
 
-            <EditText
-                android:layout_width="300dp"
-                android:layout_height="30dp"
-                android:layout_gravity="center"
-                android:background="@drawable/item_bg_ntedt"
-                android:textSize="12dp"
-                android:paddingLeft="15dp"
-                android:hint="Nama Barang" />
-
-            <EditText
-                android:layout_width="300dp"
-                android:layout_height="30dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="13dp"
-                android:textSize="12dp"
-                android:background="@drawable/item_bg"
-                android:paddingLeft="15dp"
-                android:hint="Jumlah Item" />
-
-            <EditText
-                android:layout_width="300dp"
-                android:layout_height="30dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="13dp"
-                android:background="@drawable/item_bg"
-                android:textSize="12dp"
-                android:paddingLeft="15dp"
-                android:hint="Harga" />
-
-            <EditText
-                android:layout_width="300dp"
-                android:layout_height="30dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="13dp"
-                android:background="@drawable/item_bg"
-                android:textSize="12dp"
-                android:paddingLeft="15dp"
-                android:hint="Tanggal dimasukan" />
-
-            <EditText
-                android:layout_width="300dp"
-                android:layout_height="30dp"
-                android:background="@drawable/item_bg"
-                android:layout_gravity="center"
-                android:hint="Deskripsi/Keterangan"
-                android:textSize="12dp"
-                android:paddingLeft="15dp"
-                android:layout_marginTop="13dp"/>
-        </LinearLayout>
 
     </RelativeLayout>
 
-    <ImageView
+
+    <RelativeLayout
+        android:id="@+id/form1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:src="@drawable/img_item"
+        android:layout_below="@id/layout_addGambar"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="69dp"/>
+        android:layout_marginTop="30dp">
 
-    <LinearLayout
-        android:layout_width="match_parent"
+        <EditText
+            android:id="@+id/edtnama_barang"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_rectangle_15"
+            android:hint="Masukan Nama Barang"
+            android:paddingLeft="12dp"
+            android:textSize="13dp" />
+
+        <EditText
+            android:id="@+id/edtkategori_barang"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/edtnama_barang"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/ic_rectangle_15"
+            android:hint="Masukan Kategori Barang"
+            android:paddingLeft="12dp"
+            android:textSize="13dp" />
+
+        <EditText
+            android:id="@+id/edtquantity"
+            android:layout_width="336dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/edtkategori_barang"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/ic_rectangle_15"
+            android:hint="Masukan Jumlah Quantity"
+            android:paddingLeft="12dp"
+            android:textSize="13dp" />
+
+        <EditText
+            android:id="@+id/edtharga"
+            android:layout_width="336dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/edtquantity"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/ic_rectangle_15"
+            android:hint="Masukan Harga"
+            android:paddingLeft="12dp"
+            android:textSize="13dp" />
+
+        <EditText
+            android:id="@+id/edttanggal"
+            android:layout_width="336dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/edtharga"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/ic_rectangle_15"
+            android:clickable="true"
+            android:drawableRight="@drawable/ic_date_range_black_24dp"
+            android:paddingLeft="12dp"
+            android:text="Tanggal"
+            android:textSize="13dp" />
+
+        <EditText
+            android:id="@+id/edtdetail"
+            android:layout_width="336dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/edttanggal"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/ic_rectangle_15"
+            android:hint="Masukan Detail barang"
+            android:paddingLeft="12dp"
+            android:textSize="13dp" />
+
+
+    </RelativeLayout>
+
+
+    <Button
+        android:id="@+id/btn_add"
+        android:layout_width="273dp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_below="@id/content"
-        android:gravity="center">
+        android:layout_below="@id/form1"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:layout_margin="20sp"
+        android:background="@android:color/white"
+        android:text="Add Item"
+        android:textColor="#6A0DAD" />
 
-        <Button
-            android:id="@+id/change_btn"
-            android:layout_width="136dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="20sp"
-            android:layout_gravity="center"
-            android:text="Change"
-            android:textColor="#3CB371"
-            android:background="@android:color/white" />
-
-        <Button
-            android:id="@+id/change_delete"
-            android:layout_width="136dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="20sp"
-            android:layout_gravity="center"
-            android:text="Delete"
-            android:textColor="#3CB371"
-            android:background="@android:color/white"
-            android:layout_centerHorizontal="true" />
-
-    </LinearLayout>
-
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
 
 

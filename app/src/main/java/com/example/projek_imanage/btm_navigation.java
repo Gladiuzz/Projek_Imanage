@@ -4,23 +4,38 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.example.projek_imanage.fitur.Homeitem;
 import com.example.projek_imanage.fitur.Listitem;
+import com.example.projek_imanage.fitur.add_Fragment;
 import com.example.projek_imanage.fitur.transactionitem;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class btm_navigation extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
+    public static final String USER_ID = "user_id";
+    public static final String USER_EMAIL = "user_email";
+    public static final String USER_NAME = "user_name";
+    public static final String USER_PASSWORD = "user_password";
+
+
     FloatingActionButton navigation_add;
+    ImageView logout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_btm_navigation);
+
+        Bundle bundle1 = getIntent().getExtras();
+
+        final String user_id = bundle1.getString(loginactivity.USER_ID);
 
 
         loadfragment(new Homeitem());
@@ -32,9 +47,12 @@ public class btm_navigation extends AppCompatActivity implements BottomNavigatio
         navigation_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Fragment fragment = null;
-                fragment = new add_Fragment();
-                loadfragment(fragment);
+
+                Bundle bundles = new Bundle();
+                bundles.putString(USER_ID, user_id);
+                add_Fragment add = new add_Fragment();
+                add.setArguments(bundles);
+                loadfragment(add);
             }
         });
 
@@ -67,6 +85,16 @@ public class btm_navigation extends AppCompatActivity implements BottomNavigatio
             return true;
         }
         return false;
+    }
+
+    private void logout(){
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirebaseAuth.getInstance().signOut();
+            }
+        });
+
     }
 
 

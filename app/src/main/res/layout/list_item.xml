@@ -4,16 +4,10 @@
     android:layout_height="match_parent"
     android:background="#FFFFFF">
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_margin="14sp"
-        android:background="@drawable/side_profile_border" />
 
     <EditText
         android:id="@+id/search"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:background="@drawable/search"
         android:layout_centerHorizontal="true"
@@ -22,57 +16,12 @@
         android:hint="Search Item"
         android:textSize="12dp"/>
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="130dp"
-        android:layout_below="@+id/search"
-        android:layout_marginTop="50dp"
-        android:background="@drawable/bg_list"
-        android:layout_centerHorizontal="true">
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/data_barang"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/search"
+        android:layout_marginTop="15dp">
 
-        <ImageView
-            android:id="@+id/img_item"
-            android:layout_width="74dp"
-            android:layout_height="74dp"
-            android:src="@drawable/img_item"
-            android:layout_alignParentLeft="true"
-            android:layout_margin="25dp"
-            android:layout_centerHorizontal="true" />
-
-        <TextView
-            android:id="@+id/nama_item"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Nama"
-            android:layout_toRightOf="@id/img_item"
-            android:layout_marginTop="40dp"
-            android:textSize="13dp"/>
-
-        <TextView
-            android:id="@+id/date_added"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Added Date"
-            android:layout_toRightOf="@id/img_item"
-            android:textSize="8dp"
-            android:layout_below="@id/nama_item"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Unit"
-            android:layout_toRightOf="@id/img_item"
-            android:layout_marginTop="8dp"
-            android:textSize="13dp"
-            android:layout_below="@id/date_added"/>
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_create_i_manage_24dp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginBottom="15sp"
-            android:layout_marginRight="16sp"/>
-    </RelativeLayout>
+    </androidx.recyclerview.widget.RecyclerView>
 </RelativeLayout>

@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.projek_imanage">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,25 +11,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".fitur.profileitem">
+        <activity android:name=".fitur.TransactionItem2"></activity>
+        <activity android:name=".forgot_pass" />
+        <activity android:name=".fitur.profileitem" />
+        <activity android:name=".registeractivity" />
+        <activity android:name=".loginactivity" />
+        <activity android:name=".btm_navigation" />
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".registeractivity">
-
-        </activity>
-        <activity android:name=".loginactivity">
-
-        </activity>
-        <activity android:name=".btm_navigation">
-
-        </activity>
-        <activity android:name=".MainActivity">
-
-        </activity>
     </application>
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

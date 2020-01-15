@@ -11,7 +11,7 @@
         android:id="@+id/welcome"
         android:layout_width="match_parent"
         android:layout_height="260dp"
-        android:background="#3CB371"
+        android:background="#8510D8"
         android:layout_weight="1">
 
         <TextView
@@ -61,13 +61,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="18dp"
                 android:layout_marginTop="3dp"
-                android:background="@drawable/btn_google" />
+                android:background="@drawable/group5" />
             <Button
                 android:id="@+id/btn_facebook"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="3dp"
-                android:background="@drawable/btn_fb"/>
+                android:background="@drawable/group6"/>
 
         </GridLayout>
 
@@ -80,11 +80,14 @@
 
         <Button
             android:id="@+id/masuk"
-            android:layout_width="wrap_content"
+            android:layout_width="266dp"
             android:layout_height="wrap_content"
-            android:background="@drawable/btn_signup"
+            android:background="@color/main_color"
             android:layout_gravity="center"
-            android:layout_marginTop="35sp"/>
+            android:layout_marginTop="35sp"
+            android:text="Sign Up"
+            android:textColor="@android:color/white"
+            android:textAllCaps="false"/>
 
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -105,6 +108,7 @@
                 android:layout_centerHorizontal="true"
                 android:text="  Login"
                 android:layout_toRightOf="@id/already"
+                android:clickable="true"
                 android:textColor="#3C82FF"/>
         </RelativeLayout>
 
