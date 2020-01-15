@@ -4,8 +4,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-
-
     <RelativeLayout
         android:id="@+id/content"
         android:layout_width="wrap_content"
@@ -17,103 +15,119 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="25dp"
-            android:text="Will this item be sold?"
+            android:textColor="#8510D8"
+            android:textStyle="bold"
+            android:text="Apakah anda yakin ingin mengurangi"
             android:textSize="20sp" />
 
-
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="200dp"
-            android:background="@drawable/item_bg"
-            android:padding="15dp">
-
-            <LinearLayout
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical="30dp"
-                android:layout_centerHorizontal="true"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Nama Barang :"
-                    android:textSize="12dp" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="13dp"
-                    android:hint="Jumlah Item :"
-                    android:textSize="12dp" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="13dp"
-                    android:hint="Harga :"
-                    android:textSize="12dp" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="13dp"
-                    android:hint="Tanggal dimasukan :"
-                    android:textSize="12dp" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="13dp"
-                    android:hint="Deskripsi/Keterangan :"
-                    android:textSize="12dp" />
-            </LinearLayout>
-        </RelativeLayout>
-
-
-
-
     </RelativeLayout>
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"
-        android:src="@drawable/img_item" />
 
     <RelativeLayout
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/content"
-        android:layout_centerHorizontal="true">
+        android:background="@drawable/border1"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:padding="15dp">
 
-        <Button
-            android:id="@+id/btn_yes"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/btn_transaction"
-            android:text="Yes"
-            android:textColor="#3CB371" />
+            android:layout_centerHorizontal="true"
+            android:orientation="vertical">
 
-        <Button
-            android:id="@+id/btn_no"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="60dp"
-            android:layout_marginTop="20dp"
-            android:layout_toRightOf="@id/btn_yes"
-            android:background="@drawable/btn_transaction"
-            android:text="No"
-            android:textColor="#3CB371" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="30dp"
+                android:textColor="#8510D8"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:text="Nama Item"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:hint="Nama Barang :"
+                android:textSize="12dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="13dp"
+                android:hint="Jumlah Item :"
+                android:textSize="12dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="13dp"
+                android:hint="Harga :"
+                android:textSize="12dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="13dp"
+                android:hint="Tanggal dimasukan :"
+                android:textSize="12dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="13dp"
+                android:hint="Deskripsi/Keterangan :"
+                android:textSize="12dp" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/btn_yes"
+                    android:layout_width="130dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/border1"
+                    android:text="Yes"
+                    android:textColor="#6A0DAD"
+                    android:layout_marginRight="20dp"/>
+
+                <Button
+                    android:id="@+id/btn_no"
+                    android:layout_width="130dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/border1"
+                    android:text="No"
+                    android:layout_toRightOf="@id/btn_yes"
+                    android:textColor="#6A0DAD" />
+            </RelativeLayout>
+
+        </LinearLayout>
 
     </RelativeLayout>
+
+
+
+
+
+
+    <ImageView
+        android:layout_width="135dp"
+        android:layout_height="135dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="65dp"
+        android:src="@drawable/ic_add_a_photo_black_24dp" />
+
 
 
 </RelativeLayout>

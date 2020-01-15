@@ -23,6 +23,8 @@ public class Listitem extends Fragment {
     private RecyclerView mDataList;
     private DatabaseReference dbr;
 
+
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -42,6 +44,14 @@ public class Listitem extends Fragment {
             }
         }
 
+
+
+
         return view;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
     }
 }

@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import com.example.projek_imanage.fitur.Homeitem;
 import com.example.projek_imanage.fitur.Listitem;
 import com.example.projek_imanage.fitur.add_Fragment;
+import com.example.projek_imanage.fitur.profileitem;
 import com.example.projek_imanage.fitur.transactionitem;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -68,6 +69,9 @@ public class btm_navigation extends AppCompatActivity implements BottomNavigatio
                 break;
             case R.id.navigation_transaction:
                 fragment = new transactionitem();
+                break;
+            case R.id.navigation_profile:
+                fragment = new profileitem();
                 break;
             case R.id.navigation_list:
                 fragment = new Listitem();

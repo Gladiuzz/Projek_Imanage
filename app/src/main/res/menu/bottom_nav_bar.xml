@@ -18,9 +18,9 @@
         android:title="Transaction" />
 
     <item
-        android:id="@+id/navigation_setting"
-        android:icon="@drawable/ic_brightness_high_i_manage_24dp"
-        android:title="Setting" />
+        android:id="@+id/navigation_profile"
+        android:icon="@drawable/ic_person_black_24dp"
+        android:title="Profile" />
 
 
 </menu>
