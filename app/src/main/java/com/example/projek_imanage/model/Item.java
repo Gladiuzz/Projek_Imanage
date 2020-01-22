@@ -1,10 +1,12 @@
 package com.example.projek_imanage.model;
 
-import java.util.Date;
-
 public class Item {
     public String id_item ,nama_Barang, kategori ,deskripsi, tanggal, gambar_Barang;
     public Integer jumlah, harga;
+
+    public Item(){
+
+    }
 
 
 
