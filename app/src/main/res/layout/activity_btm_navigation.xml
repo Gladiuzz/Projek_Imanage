@@ -6,6 +6,43 @@
     android:layout_height="match_parent"
     tools:context=".btm_navigation">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <com.google.android.material.navigation.NavigationView
+                app:headerLayout="@layout/header"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@android:color/white"
+                app:itemTextColor="@android:color/darker_gray"
+                app:itemIconTint="@android:color/darker_gray"
+                app:menu="@menu/drawer_menu"
+                android:layout_gravity="start">
+
+            </com.google.android.material.navigation.NavigationView>
+
+        </LinearLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/nnavigation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/navigation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:background="?android:attr/windowBackground"
+                app:itemIconSize="30dp"
+                app:itemIconTint="#8510D8"
+                app:itemTextColor="#8510D8"
+                app:labelVisibilityMode="labeled"
+                app:menu="@menu/bottom_nav_bar" />
+
+        </RelativeLayout>
+
 
     <FrameLayout
         android:id="@+id/isi_content"
@@ -15,25 +52,6 @@
         app:layout_constraintTop_toTopOf="parent">
 
     </FrameLayout>
-
-    <RelativeLayout
-        android:id="@+id/nnavigation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/navigation"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:background="?android:attr/windowBackground"
-            app:itemIconSize="30dp"
-            app:itemIconTint="#8510D8"
-            app:itemTextColor="#8510D8"
-            app:labelVisibilityMode="labeled"
-            app:menu="@menu/bottom_nav_bar" />
-
-    </RelativeLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/navigation_add"
