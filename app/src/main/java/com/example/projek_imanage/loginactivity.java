@@ -26,6 +26,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 import com.example.projek_imanage.fitur.add_Fragment;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 
 import java.util.regex.Pattern;
@@ -44,6 +45,7 @@ public class loginactivity extends AppCompatActivity {
     private DatabaseReference dbr;
     private TextView forgot_psw;
     private Button btn_google;
+    public FirebaseAuth.AuthStateListener authStateListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +69,25 @@ public class loginactivity extends AppCompatActivity {
 
         SignUpUser();
         Forgot_Password();
+
+        authStateListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+
+                if (firebaseAuth.getCurrentUser() != null){
+                    startActivity(new Intent(loginactivity.this, btm_navigation.class));
+                }
+            }
+        };
+
     }
+
+
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//        mAuth.addAuthStateListener(authStateListener);
+//    }
 
     private void SignUpUser() {
         mlogin.setOnClickListener(new View.OnClickListener() {

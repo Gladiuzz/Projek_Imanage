@@ -34,6 +34,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -65,7 +67,8 @@ public class add_Fragment extends DialogFragment implements DatePickerDialog.OnD
     private Uri mGambarUri;
 
     private DatabaseReference dbr;
-    private StorageReference SR;
+    private StorageReference SR, fileReference;
+    private FirebaseAuth mAuth;
     private EditText nama_item, kategori, jumlah, harga, tgl,desc;
 //    private TextView tgl;
     private Button btnAdd;
@@ -106,14 +109,12 @@ public class add_Fragment extends DialogFragment implements DatePickerDialog.OnD
         });
 
         // Yang SR untuk membuat folder Img_Barang, sedangkan dbr memasukan data ke table Item yang disesuaikan dengan id usernya
-        if (getArguments() != null) {
-            String id = getArguments().getString(btm_navigation.USER_ID);
+            mAuth = FirebaseAuth.getInstance();
+            FirebaseUser currentUser = mAuth.getCurrentUser();
+            String id = currentUser.getUid();
             SR = FirebaseStorage.getInstance().getReference("Img_Barang");
             dbr = FirebaseDatabase.getInstance().getReference("Item").child(id);
-            if (id == null){
-                Toast.makeText(getActivity(), "error", Toast.LENGTH_SHORT).show();
-            }
-        }
+
         //----------------------------------------------------------------------------------
 
         Add_Item();
@@ -133,7 +134,7 @@ public class add_Fragment extends DialogFragment implements DatePickerDialog.OnD
 
                 if (mGambarUri != null){
                     // membuat extensinya di dalam Firebase Storage
-                    StorageReference fileReference = SR.child(System.currentTimeMillis() + "."+ getFileExtension(mGambarUri));
+                    fileReference = SR.child(System.currentTimeMillis() + "."+ getFileExtension(mGambarUri));
                     fileReference.putFile(mGambarUri)
                     //----------------------------------------------------------------------------------
                             // Input berhasil
@@ -146,12 +147,23 @@ public class add_Fragment extends DialogFragment implements DatePickerDialog.OnD
                                         public void run() {
                                             mProgressBar.setProgress(0);
                                         }
-                                    }, 5000);
+                                    }, 4000);
 
                                     Toast.makeText(getActivity(), "Berhasil menambah Item", Toast.LENGTH_SHORT).show();
-                                    String id = dbr.push().getKey();
-                                    Item item = new Item(id, Nama_item, Kategori,Deskripsi, Jumlah, Harga, Tanggal, taskSnapshot.getUploadSessionUri().toString());
-                                    dbr.child(id).setValue(item);
+                                    String gambar_Barang = mGambarUri.toString();
+                                    final String id = dbr.push().getKey();
+                                    final Item item = new Item(id, Nama_item, Kategori,Deskripsi, Jumlah, Harga, Tanggal, gambar_Barang);
+
+
+                                    // url gambar
+                                    fileReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                        @Override
+                                        public void onSuccess(Uri uri) {
+                                            dbr.child(id).setValue(item);
+                                        }
+                                    });
+
+
                                 }
 
                             })

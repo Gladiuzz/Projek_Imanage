@@ -22,10 +22,6 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class Homeitem extends Fragment {
 //    CardView CV_addItem,CV_list,CV_transaksi,CV_profile;
-    public static final String USER_ID = "user_id";
-    public static final String USER_EMAIL = "user_email";
-    public static final String USER_NAME = "user_name";
-    public static final String USER_PASSWORD = "user_password";
 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 //        return super.onCreateView(inflater, container, savedInstanceState);
