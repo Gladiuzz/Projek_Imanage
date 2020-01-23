@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/layout_addGambar"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:clickable="true">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@drawable/images">
+
+        </ImageView>
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/form1"
+        android:layout_width="337dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layout_addGambar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="300dp">
+
+
+        <EditText
+            android:id="@+id/edtnama_barang"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:hint="Kursi"
+            android:textSize="40dp" />
+
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:paddingLeft="15dp"
+            android:layout_alignParentLeft="true"
+            android:text="Quantity   :"
+            android:textSize="13dp"
+            android:layout_marginBottom="50dp"
+            android:layout_below="@id/edtnama_barang"/>
+
+        <EditText
+            android:id="@+id/edttanggal"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:text=" Price  :"
+            android:textSize="25dp"
+            android:layout_margin="100dp"
+            android:layout_marginBottom="50dp"/>
+
+
+        <Button
+            android:id="@+id/btn_add"
+            android:layout_width="273dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:background="@android:color/white"
+            android:text="Edit Item"
+            android:textColor="#6A0DAD" />
+
+    </RelativeLayout>
+
+</RelativeLayout>
