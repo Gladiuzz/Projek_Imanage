@@ -1,82 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white"
     android:orientation="vertical">
 
     <RelativeLayout
-        android:id="@+id/layout_addGambar"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
-        android:clickable="true">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:src="@drawable/images">
-
-        </ImageView>
-
-    </RelativeLayout>
-
-
-    <RelativeLayout
-        android:id="@+id/form1"
-        android:layout_width="337dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/layout_addGambar"
+        android:background="@drawable/border1"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="300dp">
+        android:layout_centerVertical="true"
+        android:padding="15dp">
 
-
-        <EditText
-            android:id="@+id/edtnama_barang"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:hint="Kursi"
-            android:textSize="40dp" />
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="25dp"
+                android:textColor="#8510D8"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:text="KURSI"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:textStyle="bold"
+                android:hint="Quantity :"
+                android:textSize="12dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:layout_marginTop="13dp"
+                android:hint="Price :"
+                android:textSize="12dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="13dp"
+                android:textStyle="bold"
+                android:hint="Item date added :"
+                android:textSize="12dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textStyle="bold"
+                android:layout_marginTop="13dp"
+                android:hint="Deskripsi :"
+                android:textSize="12dp" />
 
 
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-            android:paddingLeft="15dp"
-            android:layout_alignParentLeft="true"
-            android:text="Quantity   :"
-            android:textSize="13dp"
-            android:layout_marginBottom="50dp"
-            android:layout_below="@id/edtnama_barang"/>
+            <RelativeLayout
+                android:layout_width="270dp"
+                android:layout_height="wrap_content">
 
-        <EditText
-            android:id="@+id/edttanggal"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:text=" Price  :"
-            android:textSize="25dp"
-            android:layout_margin="100dp"
-            android:layout_marginBottom="50dp"/>
+                <Button
+                    android:id="@+id/btn_yes"
+                    android:layout_width="130dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/border1"
+                    android:text="Edit item"
+                    android:textColor="#6A0DAD"
+                    android:layout_marginRight="20dp"/>
 
+            </RelativeLayout>
 
-        <Button
-            android:id="@+id/btn_add"
-            android:layout_width="273dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_gravity="center"
-            android:background="@android:color/white"
-            android:text="Edit Item"
-            android:textColor="#6A0DAD" />
+        </LinearLayout>
 
     </RelativeLayout>
 
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="70dp"
+        android:src="@drawable/kursi" />
 </RelativeLayout>
