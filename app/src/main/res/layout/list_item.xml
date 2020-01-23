@@ -4,24 +4,37 @@
     android:layout_height="match_parent"
     android:background="#FFFFFF">
 
-
-    <EditText
-        android:id="@+id/search"
-        android:layout_width="300dp"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/search"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="77dp"
-        android:paddingLeft="15dp"
-        android:hint="Search Item"
-        android:textSize="12dp"/>
+        android:background="@color/main_color"
+        android:id="@+id/search_Box">
+        <EditText
+            android:id="@+id/search"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/search"
+            android:layout_centerHorizontal="true"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="25dp"
+            android:paddingLeft="15dp"
+            android:hint="Search Item"
+            android:textSize="12dp"/>
+    </RelativeLayout>
+
+
+    <ProgressBar
+        android:id="@+id/progress_circle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/data_barang"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/search"
-        android:layout_marginTop="15dp">
+        android:layout_below="@id/search_Box"
+        android:layout_marginTop="10dp">
 
     </androidx.recyclerview.widget.RecyclerView>
 </RelativeLayout>

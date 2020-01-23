@@ -1,7 +1,9 @@
 package com.example.projek_imanage.model;
 
+import com.google.firebase.database.Exclude;
+
 public class Item {
-    public String id_item ,nama_Barang, kategori ,deskripsi, tanggal, gambar_Barang;
+    public String id_item ,nama_Barang, kategori ,deskripsi, tanggal, gambar_Barang, mkey;
     public Integer jumlah, harga;
 
     public Item(){
@@ -85,5 +87,15 @@ public class Item {
 
     public void setGambar_Barang(String gambar_Barang) {
         this.gambar_Barang = gambar_Barang;
+    }
+
+    @Exclude
+    public String getkey() {
+        return mkey;
+    }
+
+    @Exclude
+    public void setkey(String mkey) {
+        this.mkey = mkey;
     }
 }
