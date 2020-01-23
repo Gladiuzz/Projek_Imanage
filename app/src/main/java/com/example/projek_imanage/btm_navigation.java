@@ -1,7 +1,9 @@
 package com.example.projek_imanage;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
@@ -25,6 +27,9 @@ public class btm_navigation extends AppCompatActivity implements BottomNavigatio
     public static final String USER_NAME = "user_name";
     public static final String USER_PASSWORD = "user_password";
 
+   //membuat drawer dan floating drawer
+    private DrawerLayout mDrawerlayout;
+    private ActionBarDrawerToggle mToggle;
 
     FloatingActionButton navigation_add;
     ImageView logout;
@@ -43,6 +48,14 @@ public class btm_navigation extends AppCompatActivity implements BottomNavigatio
 
         BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(this);
+
+        //Drawerbar
+        mDrawerlayout = (DrawerLayout) findViewById(R.id.drawer);
+        mToggle = new ActionBarDrawerToggle(this,mDrawerlayout, R.string.open, R.string.close);
+        mDrawerlayout.addDrawerListener(mToggle);
+        mToggle.syncState();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
 
         navigation_add = findViewById(R.id.navigation_add);
         navigation_add.setOnClickListener(new View.OnClickListener() {

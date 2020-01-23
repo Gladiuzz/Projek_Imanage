@@ -6,22 +6,24 @@
     android:layout_height="match_parent"
     tools:context=".btm_navigation">
 
-        <LinearLayout
+        <androidx.drawerlayout.widget.DrawerLayout
+            android:id="@+id/drawer"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
             <com.google.android.material.navigation.NavigationView
-                app:headerLayout="@layout/header"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:layout_gravity="start"
                 android:background="@android:color/white"
-                app:itemTextColor="@android:color/darker_gray"
+                app:headerLayout="@layout/header"
                 app:itemIconTint="@android:color/darker_gray"
-                app:menu="@menu/drawer_menu"
-                android:layout_gravity="start">
+                app:itemTextColor="@android:color/darker_gray"
+                app:menu="@menu/drawer_menu">
 
             </com.google.android.material.navigation.NavigationView>
 
-        </LinearLayout>
+        </androidx.drawerlayout.widget.DrawerLayout>
 
 
         <RelativeLayout
