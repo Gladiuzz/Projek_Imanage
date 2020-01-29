@@ -51,10 +51,11 @@ import java.util.Date;
 import static android.app.Activity.RESULT_OK;
 
 
-public class add_Fragment extends DialogFragment implements DatePickerDialog.OnDateSetListener{
+public class add_Fragment extends DialogFragment implements DatePickerDialog.OnDateSetListener {
 
     public add_Fragment() {
         //Required empty public constructor
+
     }
 
     //merefers ke firebase Realtime db
@@ -63,14 +64,15 @@ public class add_Fragment extends DialogFragment implements DatePickerDialog.OnD
     private RelativeLayout mAddGambar;
     private ImageView gambar_Barang;
     private ProgressBar mProgressBar;
+    DatePickerDialog datePickerDialog;
 
     private Uri mGambarUri;
 
     private DatabaseReference dbr;
     private StorageReference SR, fileReference;
     private FirebaseAuth mAuth;
-    private EditText nama_item, kategori, jumlah, harga, tgl,desc;
-//    private TextView tgl;
+    private EditText nama_item, kategori, jumlah, harga, tgl, desc;
+    //    private TextView tgl;
     private Button btnAdd;
 
 
@@ -91,12 +93,31 @@ public class add_Fragment extends DialogFragment implements DatePickerDialog.OnD
         mProgressBar = (view.findViewById(R.id.progress_bar));
 
 
-
         tgl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 DialogFragment newFragment = new add_Fragment();
                 newFragment.show(getChildFragmentManager(), "DatePicker");
+                Calendar calendar = Calendar.getInstance();
+                int year = calendar.get(Calendar.YEAR);
+                int month = calendar.get(Calendar.MONTH);
+                final int day = calendar.get(Calendar.DAY_OF_MONTH);
+                /*datePickerDialog = new DatePickerDialog(add_Fragment.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker datePicker, int year, int month, int dayOfMonth) {
+                    }
+                },year,month,day);*/
+
+                datePickerDialog = new DatePickerDialog(newFragment.getContext(), new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        tgl.setText(day + "-" + (month + 1) + "-" + year);
+                    }
+                }, year, month, day);
+
+                datePickerDialog.show();
+
+
             }
         });
 
@@ -109,11 +130,11 @@ public class add_Fragment extends DialogFragment implements DatePickerDialog.OnD
         });
 
         // Yang SR untuk membuat folder Img_Barang, sedangkan dbr memasukan data ke table Item yang disesuaikan dengan id usernya
-            mAuth = FirebaseAuth.getInstance();
-            FirebaseUser currentUser = mAuth.getCurrentUser();
-            String id = currentUser.getUid();
-            SR = FirebaseStorage.getInstance().getReference("Img_Barang");
-            dbr = FirebaseDatabase.getInstance().getReference("Item").child(id);
+        mAuth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        String id = currentUser.getUid();
+        SR = FirebaseStorage.getInstance().getReference("Img_Barang");
+        dbr = FirebaseDatabase.getInstance().getReference("Item").child(id);
 
         //----------------------------------------------------------------------------------
 
@@ -132,11 +153,11 @@ public class add_Fragment extends DialogFragment implements DatePickerDialog.OnD
                 final String Tanggal = tgl.getText().toString().trim();
                 final String Deskripsi = desc.getText().toString().trim();
 
-                if (mGambarUri != null){
+                if (mGambarUri != null) {
                     // membuat extensinya di dalam Firebase Storage
-                    fileReference = SR.child(System.currentTimeMillis() + "."+ getFileExtension(mGambarUri));
+                    fileReference = SR.child(System.currentTimeMillis() + "." + getFileExtension(mGambarUri));
                     fileReference.putFile(mGambarUri)
-                    //----------------------------------------------------------------------------------
+                            //----------------------------------------------------------------------------------
                             // Input berhasil
                             .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                                 @Override
@@ -152,7 +173,7 @@ public class add_Fragment extends DialogFragment implements DatePickerDialog.OnD
                                     Toast.makeText(getActivity(), "Berhasil menambah Item", Toast.LENGTH_SHORT).show();
                                     String gambar_Barang = mGambarUri.toString();
                                     final String id = dbr.push().getKey();
-                                    final Item item = new Item(id, Nama_item, Kategori,Deskripsi, Jumlah, Harga, Tanggal, gambar_Barang);
+                                    final Item item = new Item(id, Nama_item, Kategori, Deskripsi, Jumlah, Harga, Tanggal, gambar_Barang);
 
 
                                     // url gambar
@@ -186,7 +207,7 @@ public class add_Fragment extends DialogFragment implements DatePickerDialog.OnD
                                     mProgressBar.setProgress((int) progress);
                                 }
                             });
-                            //----------------------------------------------------------------------------------
+                    //----------------------------------------------------------------------------------
                 }
 
 //                String id = dbr.push().getKey();
@@ -208,8 +229,6 @@ public class add_Fragment extends DialogFragment implements DatePickerDialog.OnD
     }
 
 
-
-
     // buat datepicker
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -226,11 +245,11 @@ public class add_Fragment extends DialogFragment implements DatePickerDialog.OnD
         c.set(Calendar.YEAR, yy);
         c.set(Calendar.MONTH, mm);
         c.set(Calendar.DAY_OF_MONTH, dd);
-        String date = mm+"/"+dd+"/"+yy;
+        String date = mm + "/" + dd + "/" + yy;
         tgl.setText(date);
     }
 
-    private void openFileChooser(){
+    private void openFileChooser() {
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
@@ -243,7 +262,7 @@ public class add_Fragment extends DialogFragment implements DatePickerDialog.OnD
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null){
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
             mGambarUri = data.getData();
             gambar_Barang.setImageURI(mGambarUri);
         }
@@ -251,7 +270,7 @@ public class add_Fragment extends DialogFragment implements DatePickerDialog.OnD
     //----------------------------------------------------------------------------------
 
     // extension buat gambar
-    private String getFileExtension(Uri uri){
+    private String getFileExtension(Uri uri) {
         ContentResolver cR = getContext().getContentResolver();
         MimeTypeMap mime = MimeTypeMap.getSingleton();
         return mime.getExtensionFromMimeType(cR.getType(uri));
