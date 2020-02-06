@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/toolbar1"
+        android:background="#0000ff">
+    </androidx.appcompat.widget.Toolbar>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Setting"
+        android:textSize="30dp"
+        android:textColor="#ffff">
+
+    </TextView>
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="360dp"
+        android:checked="false"
+        android:textOff="Off"
+        android:textOn="On"
+        android:layout_marginTop="10dp"
+        android:id="@+id/switchmoney"
+        android:layout_below="@id/toolbar1"></androidx.appcompat.widget.SwitchCompat>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtmoney"
+        android:layout_below="@id/toolbar1"
+        android:text="Money(000)"
+        android:layout_marginLeft="10dp"
+        android:textStyle="bold"
+        android:fontFamily="casual"
+        android:layout_marginTop="10dp"
+        android:textSize="20dp">
+    </TextView>
+    <androidx.appcompat.widget.SwitchCompat
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/switchmoney"
+        android:layout_marginLeft="360dp"
+        android:checked="false"
+        android:textOff="Off"
+        android:textOn="On"
+        android:layout_marginTop="10dp">
+    </androidx.appcompat.widget.SwitchCompat>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mode Dolar($)"
+        android:layout_below="@id/txtmoney"
+        android:layout_marginTop="10dp"
+        android:textStyle="bold"
+        android:fontFamily="casual"
+        android:textSize="20dp"
+        android:layout_marginLeft="10dp">
+
+    </TextView>
+
+</RelativeLayout>

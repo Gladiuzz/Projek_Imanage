@@ -20,6 +20,9 @@
         <activity android:name=".loginactivity" />
         <activity android:name=".btm_navigation" />
         <activity android:name=".MainActivity">
+
+        </activity>
+        <activity android:name=".model.SpalsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
