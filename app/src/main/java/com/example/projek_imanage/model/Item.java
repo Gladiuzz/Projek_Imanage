@@ -37,65 +37,72 @@ public class Item {
         return nama_Barang;
     }
 
-    public void setNama_Barang(String nama_Barang) {
+    public String setNama_Barang(String nama_Barang) {
         this.nama_Barang = nama_Barang;
+        return nama_Barang;
     }
 
     public String getKategori() {
         return kategori;
     }
 
-    public void setKategori(String kategori) {
+    public String setKategori(String kategori) {
         this.kategori = kategori;
+        return kategori;
     }
 
     public String getDeskripsi() {
         return deskripsi;
     }
 
-    public void setDeskripsi(String deskripsi) {
+    public String setDeskripsi(String deskripsi) {
         this.deskripsi = deskripsi;
+        return deskripsi;
     }
 
     public Integer getJumlah() {
         return jumlah;
     }
 
-    public void setJumlah(Integer jumlah) {
+    public Integer setJumlah(Integer jumlah) {
         this.jumlah = jumlah;
+        return jumlah;
     }
 
     public Integer getHarga() {
         return harga;
     }
 
-    public void setHarga(Integer harga) {
+    public Integer setHarga(Integer harga) {
         this.harga = harga;
+        return harga;
     }
 
     public String getTanggal() {
         return tanggal;
     }
 
-    public void setTanggal(String tanggal) {
+    public String setTanggal(String tanggal) {
         this.tanggal = tanggal;
+        return tanggal;
     }
 
     public String getGambar_Barang() {
         return gambar_Barang;
     }
 
-    public void setGambar_Barang(String gambar_Barang) {
+    public String setGambar_Barang(String gambar_Barang) {
         this.gambar_Barang = gambar_Barang;
+        return gambar_Barang;
     }
 
     @Exclude
-    public String getkey() {
+    public String getKey() {
         return mkey;
     }
 
     @Exclude
-    public void setkey(String mkey) {
+    public void setKey(String mkey) {
         this.mkey = mkey;
     }
 }

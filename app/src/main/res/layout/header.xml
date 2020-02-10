@@ -1,32 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="160dp"
-    android:background="@drawable/atas"
-    android:padding="20dp">
-    <ImageView
-        android:src="@drawable/avatar"
-        android:layout_width="75dp"
-        android:layout_height="75dp">
-    </ImageView>
-    <TextView
-        android:layout_width="wrap_content"
+    android:layout_height="180dp"
+    android:background="@color/main_color"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Nickname"
-        android:textColor="#ffffff"
-        android:textStyle="bold"
-        android:layout_marginTop="5dp">
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="20dp">
 
-    </TextView>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Nickname@gmail.com"
-        android:textColor="#ffffff"
-        android:textStyle="bold"
-        android:layout_marginTop="3dp">
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/avatar"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/avatar" />
 
-    </TextView>
+        <TextView
+            android:id="@+id/name_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/avatar"
+            android:layout_marginTop="5dp"
+            android:text="Nickname"
+            android:textColor="@android:color/white"
+            android:textStyle="bold" />
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/email_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/name_header"
+            android:layout_marginTop="3dp"
+            android:textAllCaps="false"
+            android:text="Nickname@gmail.com"
+            android:textColor="@android:color/white"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+
+
+</RelativeLayout>

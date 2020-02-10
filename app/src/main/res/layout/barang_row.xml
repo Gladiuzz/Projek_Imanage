@@ -3,39 +3,76 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card_Barang"
     android:orientation="vertical"
-    app:cardCornerRadius="12dp"
+    app:cardCornerRadius="15dp"
     android:layout_margin="7dp"
     android:elevation="90dp">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="248dp"
+        android:layout_height="120dp"
         android:orientation="vertical"
-        android:background="#121111">
+        android:background="@android:color/white">
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="180dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/am56pz2_460swp"
-            android:id="@+id/barang_img"/>
+        <RelativeLayout
+            android:id="@+id/lyt_barang_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="13dp"
+            android:layout_marginRight="15dp">
 
-        <TextView
-            android:layout_width="match_parent"
+            <ImageView
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:src="@drawable/am56pz2_460swp"
+                android:scaleType="centerCrop"
+                android:id="@+id/barang_img" />
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/nama_barang"
-            android:text="Nama Barang"
-            android:textSize="18dp"
-            android:textColor="@android:color/white"
-            android:textAllCaps="false"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/detail_barang"
-            android:text="Deskripsi Barang"
-            android:textColor="@android:color/white"
-            android:textAllCaps="false"/>
-    </LinearLayout>
+            android:layout_toRightOf="@id/lyt_barang_img"
+            android:layout_centerVertical="true">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/nama_barang"
+                android:text="Nama Barang"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:textColor="@android:color/black"
+                android:textAllCaps="false" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/harga_barang"
+                android:text="Harga Barang"
+                android:textSize="12sp"
+                android:textColor="@color/main_color"
+                android:textAllCaps="false"
+                android:layout_below="@id/nama_barang"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/detail_barang"
+                android:text="Deskripsi Barang"
+                android:textColor="@android:color/darker_gray"
+                android:layout_marginTop="10dp"
+                android:textAllCaps="false"
+                android:layout_below="@id/harga_barang" />
+
+
+
+        </RelativeLayout>
+
+    </RelativeLayout>
 
 </androidx.cardview.widget.CardView>

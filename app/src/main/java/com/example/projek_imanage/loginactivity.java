@@ -17,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.bumptech.glide.Glide;
 import com.example.projek_imanage.fitur.Homeitem;
 import com.example.projek_imanage.model.User;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -28,6 +29,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.example.projek_imanage.fitur.add_Fragment;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.regex.Pattern;
 
@@ -46,6 +49,7 @@ public class loginactivity extends AppCompatActivity {
     private TextView forgot_psw;
     private Button btn_google;
     public FirebaseAuth.AuthStateListener authStateListener;
+    private StorageReference SR;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +58,7 @@ public class loginactivity extends AppCompatActivity {
 
         //Get Firebase Auth Instance
         mAuth = FirebaseAuth.getInstance();
+        SR = FirebaseStorage.getInstance().getReference();
 
         mlogin =  findViewById(R.id.login);
         lgn_email =  findViewById(R.id.email_lgn);
@@ -83,11 +88,11 @@ public class loginactivity extends AppCompatActivity {
     }
 
 
-//    @Override
-//    protected void onResume() {
-//        super.onResume();
-//        mAuth.addAuthStateListener(authStateListener);
-//    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mAuth.addAuthStateListener(authStateListener);
+    }
 
     private void SignUpUser() {
         mlogin.setOnClickListener(new View.OnClickListener() {
@@ -96,6 +101,7 @@ public class loginactivity extends AppCompatActivity {
                 final String username = lgn_email.getText().toString().trim();
                 final String user_email = lgn_email.getText().toString().trim();
                 final String user_password = lgn_password.getText().toString().trim();
+                final String user_Avatar =  Glide.with(getApplicationContext()).load(SR.child("45744")).toString();
 
                 if (TextUtils.isEmpty(user_email)){
                     Toast.makeText(getApplicationContext(), "Enter email address!", Toast.LENGTH_SHORT).show();
@@ -121,7 +127,7 @@ public class loginactivity extends AppCompatActivity {
                                 }
                                 else{
                                     String id = mAuth.getUid();
-                                    User user = new User(id,username,user_email,user_password);
+                                    User user = new User(id,username,user_email,user_password, user_Avatar);
 
                                     //passing data from activity to fragment
 

@@ -1,36 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
+    android:id="@+id/drawer_layout"
+    android:fitsSystemWindows="true"
     android:layout_height="match_parent"
+    tools:openDrawer="start"
     tools:context=".btm_navigation">
 
-        <LinearLayout
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <com.google.android.material.navigation.NavigationView
-                app:headerLayout="@layout/header"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="@android:color/white"
-                app:itemTextColor="@android:color/darker_gray"
-                app:itemIconTint="@android:color/darker_gray"
-                app:menu="@menu/drawer_menu"
-                android:layout_gravity="start">
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/fui_transparent"
+            android:elevation="4dp"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
 
-            </com.google.android.material.navigation.NavigationView>
 
-        </LinearLayout>
 
+    </RelativeLayout>
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".btm_navigation">
+
+
+
+
+        <FrameLayout
+            android:id="@+id/isi_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </FrameLayout>
 
         <RelativeLayout
-            android:id="@+id/nnavigation"
+            android:id="@+id/navigation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
             <com.google.android.material.bottomnavigation.BottomNavigationView
-                android:id="@+id/navigation"
+                android:id="@+id/btm_navigation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
@@ -44,25 +69,34 @@
         </RelativeLayout>
 
 
-    <FrameLayout
-        android:id="@+id/isi_content"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
 
-    </FrameLayout>
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/navigation_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="35dp"
+            android:src="@drawable/create_item_icon"
+            app:maxImageSize="55dp" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/navigation_add"
+
+
+
+    </RelativeLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
+        app:headerLayout="@layout/header"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="35dp"
-        android:src="@drawable/create_item_icon"
-        app:backgroundTint="#3CB371"
-        app:maxImageSize="55dp" />
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        app:itemTextColor="@android:color/darker_gray"
+        app:menu="@menu/drawer_menu"
+        android:layout_gravity="start">
+
+    </com.google.android.material.navigation.NavigationView>
+
+</androidx.drawerlayout.widget.DrawerLayout>
 
 
-</RelativeLayout>

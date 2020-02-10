@@ -36,13 +36,16 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
 
+import java.io.File;
 import java.net.URI;
 import java.text.DateFormat;
 import java.util.Calendar;
@@ -65,10 +68,12 @@ public class add_Fragment extends DialogFragment implements DatePickerDialog.OnD
     private ProgressBar mProgressBar;
 
     private Uri mGambarUri;
+    private Item items;
 
     private DatabaseReference dbr;
-    private StorageReference SR, fileReference;
+    private StorageReference SR;
     private FirebaseAuth mAuth;
+    private StorageTask uploadtask;
     private EditText nama_item, kategori, jumlah, harga, tgl,desc;
 //    private TextView tgl;
     private Button btnAdd;
@@ -89,6 +94,7 @@ public class add_Fragment extends DialogFragment implements DatePickerDialog.OnD
         mAddGambar = (view.findViewById(R.id.layout_addGambar));
         gambar_Barang = (view.findViewById(R.id.img_barang));
         mProgressBar = (view.findViewById(R.id.progress_bar));
+        items = new Item();
 
 
 
@@ -125,22 +131,26 @@ public class add_Fragment extends DialogFragment implements DatePickerDialog.OnD
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final String Nama_item = nama_item.getText().toString().trim();
-                final String Kategori = kategori.getText().toString().trim();
-                final Integer Jumlah = Integer.parseInt(jumlah.getText().toString());
-                final Integer Harga = Integer.parseInt(harga.getText().toString());
-                final String Tanggal = tgl.getText().toString().trim();
-                final String Deskripsi = desc.getText().toString().trim();
+                final String Nama_item = items.setNama_Barang(nama_item.getText().toString().trim());
+                final String Kategori = items.setKategori(kategori.getText().toString().trim());
+                final Integer Jumlah = items.setJumlah(Integer.parseInt(jumlah.getText().toString()));
+                final Integer Harga = items.setHarga(Integer.parseInt(harga.getText().toString()));
+                final String Tanggal = items.setTanggal(tgl.getText().toString().trim());
+                final String Deskripsi = items.setDeskripsi(desc.getText().toString().trim());
+
+
 
                 if (mGambarUri != null){
                     // membuat extensinya di dalam Firebase Storage
-                    fileReference = SR.child(System.currentTimeMillis() + "."+ getFileExtension(mGambarUri));
+                    final StorageReference fileReference = SR.child(System.currentTimeMillis() + "."+ getFileExtension(mGambarUri));
                     fileReference.putFile(mGambarUri)
                     //----------------------------------------------------------------------------------
                             // Input berhasil
                             .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                                 @Override
                                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+//                                    Uri downloadUrl = taskSnapshot.getDownloadUrl();
+
                                     Handler handler = new Handler();
                                     handler.postDelayed(new Runnable() {
                                         @Override
@@ -150,18 +160,22 @@ public class add_Fragment extends DialogFragment implements DatePickerDialog.OnD
                                     }, 4000);
 
                                     Toast.makeText(getActivity(), "Berhasil menambah Item", Toast.LENGTH_SHORT).show();
-                                    String gambar_Barang = mGambarUri.toString();
-                                    final String id = dbr.push().getKey();
-                                    final Item item = new Item(id, Nama_item, Kategori,Deskripsi, Jumlah, Harga, Tanggal, gambar_Barang);
 
 
-                                    // url gambar
+
                                     fileReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                                         @Override
                                         public void onSuccess(Uri uri) {
+//                                            final Uri uridownload = uri;
+
+                                            String gambar = uri.toString();
+
+                                            String id = dbr.push().getKey();
+                                            Item item = new Item(id, Nama_item, Kategori,Deskripsi, Jumlah, Harga, Tanggal, gambar);
                                             dbr.child(id).setValue(item);
                                         }
                                     });
+
 
 
                                 }
@@ -206,6 +220,7 @@ public class add_Fragment extends DialogFragment implements DatePickerDialog.OnD
             }
         });
     }
+
 
 
 

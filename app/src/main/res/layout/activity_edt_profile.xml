@@ -1,119 +1,144 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:id="@+id/edt_profile">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="270dp"
+                android:background="@drawable/profile_bg">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_margin="15dp"
+                    android:src="@drawable/ic_arrow_back_black_24dp" />
+
+                <ImageView
+                    android:id="@+id/submit_edt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:clickable="true"
+                    android:layout_margin="15dp"
+                    android:src="@drawable/ic_check_black_24dp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="9">
+
+            </RelativeLayout>
+        </LinearLayout>
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/img_avatar"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/am56pz2_460swp"
+            android:layout_centerHorizontal="true"
+            android:scaleType="centerCrop"
+            android:layout_marginTop="160dp"/>
+
+        <Button
+            android:id="@+id/btn_img"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:layout_below="@+id/img_avatar"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/btn_gradient"
+            android:text="Changa Image"
+            android:layout_marginTop="12dp"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:textAlignment="center"/>
+
+
+
+
 
         <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="6"
-            android:background="@drawable/profile_bg">
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical"
+            android:layout_below="@id/btn_img">
 
-            <ImageView
-                android:layout_width="42sp"
-                android:layout_height="42sp"
-                android:layout_alignParentRight="true"
-                android:layout_margin="15dp"
-                android:src="@drawable/ic_exit_to_app_white_24dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name*"
+                android:layout_marginTop="5dp"/>
+
+
+            <EditText
+                android:id="@+id/edtnama"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:background="@drawable/border1"
+                android:hint="Input Nama"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="30dp"
+                android:textSize="13dp"
+                android:paddingLeft="15dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Email*"
+                android:layout_below="@id/edtnama"
+                android:layout_marginTop="15dp"/>
+
+            <EditText
+                android:id="@+id/edtemail"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:paddingLeft="15dp"
+                android:hint="email"
+                android:background="@drawable/border1"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="40dp"
+                android:layout_below="@id/edtnama"
+                android:textSize="13dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Password*"
+                android:layout_below="@id/edtemail"
+                android:layout_marginTop="15dp"/>
+
+            <EditText
+                android:id="@+id/edtpass"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_below="@id/edtemail"
+                android:paddingLeft="15dp"
+                android:background="@drawable/border1"
+                android:hint="password"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="40dp"
+                android:textSize="13dp" />
+
+
+
+
+
         </RelativeLayout>
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="9"></RelativeLayout>
-    </LinearLayout>
-    <ImageView
-        android:id="@+id/img_profile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/group14"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="160dp"/>
+    </RelativeLayout>
 
-    <TextView
-        android:id="@+id/label_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/img_profile"
-        android:text="User Name"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="12dp"
-        android:textSize="18dp"/>
 
-    <TextView
-        android:id="@+id/label_email"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="gmail_user"
-        android:layout_below="@id/label_name"
-        android:layout_centerHorizontal="true"/>
-
-    <TextView
-        android:id="@+id/label_transactionHistory"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Profile"
-        android:layout_below="@+id/img_profile"
-        android:textAppearance="?android:textAppearanceMedium"
-        android:layout_marginStart="11dp"
-        android:layout_marginTop="12dp"/>
-
-    <View
-        android:id="@+id/line_1"
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:layout_below="@id/label_transactionHistory"
-        android:layout_marginStart="11dp"
-        android:background="#D3D3D3"
-        android:layout_marginEnd="79.5dp"/>
-
-    <LinearLayout
-        android:layout_width="370dp"
-        android:layout_centerHorizontal="true"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:orientation="vertical"
-        android:layout_below="@id/line_1">
-
-        <EditText
-            android:id="@+id/edtnama"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Nama"
-            android:layout_centerHorizontal="true"
-            android:textSize="13dp" />
-        <EditText
-            android:id="@+id/edtemail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="email"
-            android:layout_centerHorizontal="true"
-            android:textSize="13dp" />
-        <EditText
-            android:id="@+id/edtpass"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="password"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="12dp"
-            android:textSize="13dp" />
-        <Button
-            android:id="@+id/btn_add"
-            android:layout_width="273dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/form1"
-            android:layout_centerHorizontal="true"
-            android:layout_gravity="center"
-            android:layout_margin="20sp"
-            android:background="@android:color/white"
-            android:text="Add Item"
-            android:textColor="#6A0DAD"/>
-
-    </LinearLayout>
-
-</RelativeLayout>
+</ScrollView>

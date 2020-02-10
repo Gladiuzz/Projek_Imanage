@@ -3,7 +3,6 @@
     package="com.example.projek_imanage">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -12,7 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".list_det"></activity>
+        <activity android:name=".edt_profile"></activity>
+        <activity android:name=".detail_list" />
+        <activity android:name=".list_det" />
         <activity android:name=".fitur.TransactionItem2" />
         <activity android:name=".forgot_pass" />
         <activity android:name=".fitur.profileitem" />

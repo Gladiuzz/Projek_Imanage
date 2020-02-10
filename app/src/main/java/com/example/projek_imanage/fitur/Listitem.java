@@ -1,6 +1,7 @@
 package com.example.projek_imanage.fitur;
 
 import android.content.Context;
+import android.content.Intent;
 import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,10 +23,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.projek_imanage.R;
 import com.example.projek_imanage.btm_navigation;
+import com.example.projek_imanage.detail_list;
+import com.example.projek_imanage.list_det;
 import com.example.projek_imanage.loginactivity;
 import com.example.projek_imanage.model.Item;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -46,14 +51,22 @@ import java.util.List;
 public class Listitem extends Fragment implements ItemAdapter.OnItemClickListener {
 
 
-    private RecyclerView mDataList;
-    private ItemAdapter mAdapter;
+
     private ProgressBar mprogressCircle;
     private FirebaseStorage mStorage;
+    private StorageReference SR;
     private DatabaseReference dbr;
     private ValueEventListener mDBListener;
+    private RecyclerView mDataList;
+    private ItemAdapter mAdapter;
     private List<Item> mItems;
+    private Item items;
     private FirebaseAuth mAuth;
+
+    private TextView ttl_item;
+    private int countItems;
+
+    private String id;
 
 
     @Nullable
@@ -62,11 +75,14 @@ public class Listitem extends Fragment implements ItemAdapter.OnItemClickListene
 
 
 //        return super.onCreateView(inflater, container, savedInstanceState);
-        View view = inflater.inflate(R.layout.list_item, container, false);
+        final View view = inflater.inflate(R.layout.list_item, container, false);
         mDataList = (view.findViewById(R.id.data_barang));
         mprogressCircle = (view.findViewById(R.id.progress_circle));
+        ttl_item = (view.findViewById(R.id.no_item));
         mDataList.setHasFixedSize(true);
         mDataList.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        items = new Item();
 
         mItems = new ArrayList<>();
 
@@ -80,7 +96,7 @@ public class Listitem extends Fragment implements ItemAdapter.OnItemClickListene
 
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        String id = currentUser.getUid();
+        id = currentUser.getUid();
         dbr = FirebaseDatabase.getInstance().getReference("Item").child(id);
 
 
@@ -93,9 +109,20 @@ public class Listitem extends Fragment implements ItemAdapter.OnItemClickListene
 
                 for (DataSnapshot itemSnapshot : dataSnapshot.getChildren()) {
                     Item item = itemSnapshot.getValue(Item.class);
-                    item.setkey(itemSnapshot.getKey());
+                    item.setKey(itemSnapshot.getKey());
                     mItems.add(item);
                 }
+                if (dataSnapshot.exists()){
+                    countItems = (int) dataSnapshot.getChildrenCount();
+                    ttl_item.setText(Integer.toString(countItems) + " Items");
+                }
+                else{
+                    countItems = (int) dataSnapshot.getChildrenCount();
+                    ttl_item.setText(Integer.toString(countItems) + " Items");
+                    RelativeLayout mEmpty = view.findViewById(R.id.list_empty);
+                    getLayoutInflater().inflate(R.layout.list_item, mEmpty);
+                }
+
 
                 mAdapter.notifyDataSetChanged();
 
@@ -113,35 +140,84 @@ public class Listitem extends Fragment implements ItemAdapter.OnItemClickListene
         return view;
     }
 
+
     @Override
-    public void onItemClick(int position) {
-        Toast.makeText(getContext(), "Normal Click at position :" + position, Toast.LENGTH_SHORT).show();
+    public void onItemClick(Item item) {
+//        Toast.makeText(getContext(), "Normal Click at position :" + position, Toast.LENGTH_SHORT).show();
+        Intent i = new Intent(getActivity(), list_det.class);
+        i.putExtra("id_barang", item.getId_item());
+        i.putExtra("nama_barang", item.getNama_Barang());
+        i.putExtra("kategori_barang", item.getKategori());
+        i.putExtra("jumlah_barang", item.getJumlah());
+        i.putExtra("harga_barang", item.getHarga());
+        i.putExtra("detail_barang", item.getDeskripsi());
+        i.putExtra("tanggal_barang", item.getTanggal());
+        i.putExtra("gambar_Barang", item.getGambar_Barang());
+
+        startActivity(i);
     }
 
-//    @Override
-//    public void onDetailClick(int position) {
-//        Toast.makeText(getContext(), "Detail Click at position : " + position, Toast.LENGTH_SHORT).show();
-//    }
-
     @Override
-    public void onEditClick(int position) {
-        Toast.makeText(getContext(), "Edit Click at position :" + position, Toast.LENGTH_SHORT).show();
+    public void onEditClick(Item item) {
+
+        Intent i = new Intent(getActivity(), detail_list.class);
+        i.putExtra("id_barang", item.getId_item());
+        i.putExtra("nama_barang", item.getNama_Barang());
+        i.putExtra("kategori_barang", item.getKategori());
+        i.putExtra("jumlah_barang", item.getJumlah());
+        i.putExtra("harga_barang", item.getHarga());
+        i.putExtra("detail_barang", item.getDeskripsi());
+        i.putExtra("tanggal_barang", item.getTanggal());
+        i.putExtra("gambar_Barang", item.getGambar_Barang());
+
+        startActivity(i);
+        //        startActivity(new Intent(getActivity(), detail_list.class)
+//                .putExtra("id_barang", "")
+//                .putExtra("nama_barang", "")
+//                );
+
+
+//        mAuth = FirebaseAuth.getInstance();
+//        FirebaseUser currentUser = mAuth.getCurrentUser();
+//        String id = currentUser.getUid();
+//        dbr = FirebaseDatabase.getInstance().getReference("Item").child(id);
+//
+//        dbr.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//            }
+//        });
+
     }
 
     @Override
     public void onDeleteClick(int position) {
         Item selectedItem = mItems.get(position);
-        final String selectedKey = selectedItem.getkey();
+        final String selectedKey = selectedItem.getKey();
+
 
         StorageReference dataRef = mStorage.getReferenceFromUrl(selectedItem.getGambar_Barang());
         dataRef.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
                 dbr.child(selectedKey).removeValue();
-                Toast.makeText(getContext(), "Item Deleted", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "test", Toast.LENGTH_SHORT).show();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(getContext(), "failed", Toast.LENGTH_SHORT).show();
             }
         });
     }
+
+
 
     @Override
     public void onDestroy() {

@@ -1,5 +1,6 @@
 package com.example.projek_imanage;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -19,11 +20,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button mmasuk, mgoogle;
     TextView mlogin;
     FirebaseAuth mAuth;
+    public FirebaseAuth.AuthStateListener authStateListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        mAuth = FirebaseAuth.getInstance();
 
         mlogin = (TextView) findViewById(R.id.txt_login);
         mmasuk = (Button) findViewById(R.id.masuk);
@@ -31,7 +35,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mlogin.setOnClickListener(this);
         mmasuk.setOnClickListener(this);
 
+        authStateListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
 
+                if (firebaseAuth.getCurrentUser() != null){
+                    startActivity(new Intent(MainActivity.this, btm_navigation.class));
+                }
+            }
+        };
+
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mAuth.addAuthStateListener(authStateListener);
     }
 
 

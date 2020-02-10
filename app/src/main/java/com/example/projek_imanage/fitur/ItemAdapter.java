@@ -1,6 +1,7 @@
 package com.example.projek_imanage.fitur;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -11,14 +12,20 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.projek_imanage.R;
+import com.example.projek_imanage.btm_navigation;
+import com.example.projek_imanage.detail_list;
+import com.example.projek_imanage.loginactivity;
 import com.example.projek_imanage.model.Item;
 import com.squareup.picasso.Picasso;
 
+import java.text.NumberFormat;
 import java.util.List;
+import java.util.Locale;
 
 public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder> {
     private Context mcontext;
@@ -39,11 +46,20 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ItemViewHolder holder, int position) {
-        Item itemCurrent = mItems.get(position);
+    public void onBindViewHolder(@NonNull ItemViewHolder holder, final int position) {
+        Locale localeID = new Locale("in", "ID");
+        NumberFormat formatrupiah = NumberFormat.getCurrencyInstance(localeID);
+
+        final Item itemCurrent = mItems.get(position);
         holder.Namabarang.setText(itemCurrent.getNama_Barang());
         holder.detBarang.setText(itemCurrent.getDeskripsi());
+        holder.hargaBarang.setText(formatrupiah.format(itemCurrent.getHarga()));
         Glide.with(mcontext).load(itemCurrent.getGambar_Barang()).into(holder.imgBarang);
+
+
+
+
+
     }
 
 
@@ -57,14 +73,17 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
     public class ItemViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnCreateContextMenuListener
     , MenuItem.OnMenuItemClickListener {
         ImageView imgBarang;
-        TextView Namabarang, detBarang;
+        TextView Namabarang, detBarang, hargaBarang;
+        CardView barang_card;
         View mView;
-        public ItemViewHolder(View itemvView){
+        public ItemViewHolder(final View itemvView){
             super(itemvView);
             mView = itemvView;
             Namabarang = (TextView) itemvView.findViewById(R.id.nama_barang);
             imgBarang = (ImageView) itemvView.findViewById(R.id.barang_img);
+            hargaBarang = (TextView) itemvView.findViewById(R.id.harga_barang);
             detBarang = (TextView) itemvView.findViewById(R.id.detail_barang);
+            barang_card = (CardView) itemvView.findViewById(R.id.card_Barang);
 
             itemvView.setOnClickListener(this);
             itemvView.setOnCreateContextMenuListener(this);
@@ -75,7 +94,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
             if (mListener != null){
                 int position = getAdapterPosition();
                 if (position != RecyclerView.NO_POSITION){
-                    mListener.onItemClick(position);
+                    mListener.onItemClick(mItems.get(position));
                 }
             }
         }
@@ -83,11 +102,8 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
         @Override
         public void onCreateContextMenu(ContextMenu contextMenu, View view, ContextMenu.ContextMenuInfo contextMenuInfo) {
             contextMenu.setHeaderTitle("Select Action");
-            MenuItem Detail = contextMenu.add(Menu.NONE, 1, 1, "Detail Item");
-            MenuItem Edit = contextMenu.add(Menu.NONE, 2, 2, "Edit Item");
-            MenuItem Delete = contextMenu.add(Menu.NONE, 3, 3, "Delete Item");
-
-            Detail.setOnMenuItemClickListener(this);
+            MenuItem Edit = contextMenu.add(Menu.NONE, 1, 1, "Edit Item");
+            MenuItem Delete = contextMenu.add(Menu.NONE, 2, 2, "Delete Item");
             Edit.setOnMenuItemClickListener(this);
             Delete.setOnMenuItemClickListener(this);
         }
@@ -98,11 +114,8 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
                 int position = getAdapterPosition();
                 if (position != RecyclerView.NO_POSITION){
                     switch (menuItem.getItemId()){
-//                        case 1:
-//                            mListener.onDetailClick(position);
-//                            return true;
                         case 1:
-                            mListener.onEditClick(position);
+                            mListener.onEditClick(mItems.get(position));
                             return true;
                         case 2:
                             mListener.onDeleteClick(position);
@@ -115,19 +128,18 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
     }
 
     public interface OnItemClickListener{
-        void onItemClick(int position);
-
-//        void onDetailClick(int position);
-
-        void onEditClick(int position);
+        void onItemClick(Item item);
 
         void onDeleteClick(int position);
 
+        void onEditClick(Item item);
     }
 
     public void setOnItemClickListener(OnItemClickListener listener){
         mListener = listener;
     }
+
+
 
 
 
