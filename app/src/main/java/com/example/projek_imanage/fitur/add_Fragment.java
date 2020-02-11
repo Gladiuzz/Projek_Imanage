@@ -8,6 +8,7 @@ import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -131,13 +132,53 @@ public class add_Fragment extends DialogFragment implements DatePickerDialog.OnD
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                final Integer Qty;
+                final Integer harga_barang;
+
                 final String Nama_item = items.setNama_Barang(nama_item.getText().toString().trim());
                 final String Kategori = items.setKategori(kategori.getText().toString().trim());
-                final Integer Jumlah = items.setJumlah(Integer.parseInt(jumlah.getText().toString()));
-                final Integer Harga = items.setHarga(Integer.parseInt(harga.getText().toString()));
+                final String Jumlah = jumlah.getText().toString();
+                final String Harga = harga.getText().toString();
                 final String Tanggal = items.setTanggal(tgl.getText().toString().trim());
                 final String Deskripsi = items.setDeskripsi(desc.getText().toString().trim());
 
+                if (TextUtils.isEmpty(Nama_item)){
+                    Toast.makeText(getContext(), "Enter nama barang!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                else if (TextUtils.isEmpty(Kategori)){
+                    Toast.makeText(getContext(), "Enter kategori", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                else if (harga.length() == 0){
+                    Toast.makeText(getContext(), "Enter Harga", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                else if (TextUtils.isEmpty(Deskripsi)){
+                    Toast.makeText(getContext(), "Enter Deskripsi", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                else if (mGambarUri == null){
+                    Toast.makeText(getContext(), "Enter img", Toast.LENGTH_SHORT).show();
+                }
+
+                //----------------------------------------------------------------------------------
+
+                if (TextUtils.isEmpty(Jumlah)){
+                    Toast.makeText(getContext(), "Enter jumlah quantity", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                else {
+                    Qty = items.setHarga(Integer.parseInt(Jumlah));
+                }
+
+                if (TextUtils.isEmpty(Harga)){
+                    Toast.makeText(getContext(), "Enter Harga", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                else {
+                    harga_barang = items.setHarga(Integer.parseInt(Harga));
+                }
 
 
                 if (mGambarUri != null){
@@ -171,7 +212,7 @@ public class add_Fragment extends DialogFragment implements DatePickerDialog.OnD
                                             String gambar = uri.toString();
 
                                             String id = dbr.push().getKey();
-                                            Item item = new Item(id, Nama_item, Kategori,Deskripsi, Jumlah, Harga, Tanggal, gambar);
+                                            Item item = new Item(id, Nama_item, Kategori,Deskripsi, Qty, harga_barang, Tanggal, gambar);
                                             dbr.child(id).setValue(item);
                                         }
                                     });

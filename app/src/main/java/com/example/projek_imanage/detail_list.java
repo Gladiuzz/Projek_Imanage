@@ -20,8 +20,10 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.example.projek_imanage.fitur.Listitem;
 import com.example.projek_imanage.model.Item;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -108,7 +110,7 @@ public class detail_list extends AppCompatActivity {
                 final Integer Harga = items.setHarga(Integer.parseInt(edtharga.getText().toString()));
                 final String Tanggal = items.setTanggal(edttgl.getText().toString().trim());
                 final String Deskripsi = items.setDeskripsi(edtdetail.getText().toString().trim());
-//                final String gambar_edt = Glide.with(getApplicationContext()).load(items.getGambar_Barang()).into(gambarBarang);
+                final String gambar_edt = items.setGambar_Barang(gambar_Barang);
 
                 if (mGambarUri != null){
                     final StorageReference fileReference = SR.child(System.currentTimeMillis() + "."+ getFileExtension(mGambarUri));
@@ -159,6 +161,27 @@ public class detail_list extends AppCompatActivity {
                                     mProgressBar.setProgress((int) progress);
                                 }
                             });
+                }
+                else {
+
+
+                    String id = id_item;
+                    Item item = new Item(id, Nama_item, Kategori,Deskripsi, Jumlah, Harga, Tanggal, gambar_edt);
+                    dbr.child(id).setValue(item).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            Handler handler = new Handler();
+                            handler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    mProgressBar.setProgress(0);
+                                }
+                            }, 4000);
+                            
+                            Toast.makeText(detail_list.this, "Edit berhasil", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(detail_list.this, btm_navigation.class));
+                        }
+                    });
                 }
 //
 //

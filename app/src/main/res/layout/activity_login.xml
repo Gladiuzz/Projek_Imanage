@@ -138,15 +138,26 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="218dp">
 
+<!--                <Button-->
+<!--                    android:id="@+id/login"-->
+<!--                    android:layout_width="266dp"-->
+<!--                    android:layout_height="41dp"-->
+<!--                    android:layout_centerHorizontal="true"-->
+<!--                    android:background="@color/main_color"-->
+<!--                    android:text="Log in"-->
+<!--                    android:textAllCaps="false"-->
+<!--                    android:textColor="@android:color/white"-->
+<!--                    android:textSize="16sp" />-->
+
                 <Button
                     android:id="@+id/login"
                     android:layout_width="266dp"
                     android:layout_height="41dp"
                     android:layout_centerHorizontal="true"
                     android:background="@color/main_color"
-                    android:text="Log in"
-                    android:textAllCaps="false"
+                    android:text="Log In"
                     android:textColor="@android:color/white"
+                    android:textAllCaps="false"
                     android:textSize="16sp" />
 
             </RelativeLayout>

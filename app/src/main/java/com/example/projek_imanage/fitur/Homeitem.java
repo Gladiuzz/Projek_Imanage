@@ -3,30 +3,21 @@ package com.example.projek_imanage.fitur;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.projek_imanage.HomeAdapter;
 import com.example.projek_imanage.R;
-import com.example.projek_imanage.btm_navigation;
 import com.example.projek_imanage.detail_list;
 import com.example.projek_imanage.list_det;
-import com.example.projek_imanage.loginactivity;
 import com.example.projek_imanage.model.Item;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -65,7 +56,8 @@ public class Homeitem extends Fragment implements HomeAdapter.OnItemClickListene
         username = (view.findViewById(R.id.nameUser));
         mprogressCircle = (view.findViewById(R.id.progress_circle1));
         mDataList = (view.findViewById(R.id.data_barang_horizontal));
-        mDataList.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, true));
+        mDataList.setHasFixedSize(true);
+        mDataList.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
 
         items = new Item();
 
@@ -73,9 +65,11 @@ public class Homeitem extends Fragment implements HomeAdapter.OnItemClickListene
 
         mAdapter = new HomeAdapter(getContext(), mItems);
 
+        mDataList.setAdapter(mAdapter);
+
         mAdapter.setOnItemClickListener(Homeitem.this);
 
-        mDataList.setAdapter(mAdapter);
+        mStorage = FirebaseStorage.getInstance();
 
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser currentUser = mAuth.getCurrentUser();
@@ -186,6 +180,7 @@ public class Homeitem extends Fragment implements HomeAdapter.OnItemClickListene
         });
     }
 
+
     @Override
     public void onEditClick(Item item) {
         Intent i = new Intent(getActivity(), detail_list.class);
@@ -200,5 +195,11 @@ public class Homeitem extends Fragment implements HomeAdapter.OnItemClickListene
 
         startActivity(i);
 
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        dbr.removeEventListener(mDBListener);
     }
 }

@@ -1,4 +1,4 @@
-package com.example.projek_imanage;
+package com.example.projek_imanage.fitur;
 
 import android.content.Context;
 import android.view.ContextMenu;
@@ -16,8 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 
-import com.example.projek_imanage.fitur.Homeitem;
-import com.example.projek_imanage.fitur.ItemAdapter;
+import com.example.projek_imanage.R;
 import com.example.projek_imanage.model.Item;
 
 import java.text.NumberFormat;
