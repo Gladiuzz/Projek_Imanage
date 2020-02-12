@@ -58,7 +58,7 @@
             android:layout_below="@+id/img_avatar"
             android:layout_centerHorizontal="true"
             android:background="@drawable/btn_gradient"
-            android:text="Changa Image"
+            android:text="Change Image"
             android:layout_marginTop="12dp"
             android:textAllCaps="false"
             android:textColor="@android:color/white"
@@ -131,9 +131,6 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="40dp"
                 android:textSize="13dp" />
-
-
-
 
 
         </RelativeLayout>

@@ -49,8 +49,10 @@ import com.google.firebase.storage.UploadTask;
 import java.io.File;
 import java.net.URI;
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -97,6 +99,11 @@ public class add_Fragment extends DialogFragment implements DatePickerDialog.OnD
         mProgressBar = (view.findViewById(R.id.progress_bar));
         items = new Item();
 
+        Calendar c1 = Calendar.getInstance();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("d-M-yyyy", Locale.getDefault());
+        String str1 = dateFormat.format(c1.getTime());
+        tgl.setText(str1);
+
 
 
         tgl.setOnClickListener(new View.OnClickListener() {
@@ -134,6 +141,7 @@ public class add_Fragment extends DialogFragment implements DatePickerDialog.OnD
             public void onClick(View view) {
                 final Integer Qty;
                 final Integer harga_barang;
+
 
                 final String Nama_item = items.setNama_Barang(nama_item.getText().toString().trim());
                 final String Kategori = items.setKategori(kategori.getText().toString().trim());
@@ -311,5 +319,11 @@ public class add_Fragment extends DialogFragment implements DatePickerDialog.OnD
         ContentResolver cR = getContext().getContentResolver();
         MimeTypeMap mime = MimeTypeMap.getSingleton();
         return mime.getExtensionFromMimeType(cR.getType(uri));
+    }
+
+    public void getDate(){
+        Calendar c1 = Calendar.getInstance();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        String str1 = dateFormat.format(c1.getTime());
     }
 }

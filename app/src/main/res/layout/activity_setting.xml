@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/toolbar1"
+        android:background="@color/main_color">
+    </androidx.appcompat.widget.Toolbar>
+
+
+
+    <ImageView
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:textColor="#ffff"
+        android:src="@drawable/ic_arrow_back_black_24dp"
+        android:layout_margin="12sp"/>
+
+    <RelativeLayout
+        android:id="@+id/layout_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar1">
+
+        <ImageView
+            android:id="@+id/ic_categories"
+            android:layout_width="50sp"
+            android:layout_height="50sp"
+            android:src="@drawable/am56pz2_460swp"
+            android:layout_margin="12dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="test"
+            android:layout_toRightOf="@id/ic_categories"
+            android:layout_centerVertical="true"/>
+
+    </RelativeLayout>
+
+
+
+<!--    <androidx.appcompat.widget.SwitchCompat-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginLeft="360dp"-->
+<!--        android:checked="false"-->
+<!--        android:textOff="Off"-->
+<!--        android:textOn="On"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:id="@+id/switchmoney"-->
+<!--        android:layout_below="@id/toolbar1">-->
+
+<!--    </androidx.appcompat.widget.SwitchCompat>-->
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:id="@+id/txtmoney"-->
+<!--        android:layout_below="@id/toolbar1"-->
+<!--        android:text="Money(000)"-->
+<!--        android:layout_marginLeft="10dp"-->
+<!--        android:textStyle="bold"-->
+<!--        android:fontFamily="casual"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:textSize="20dp">-->
+<!--    </TextView>-->
+<!--    <androidx.appcompat.widget.SwitchCompat-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@id/switchmoney"-->
+<!--        android:layout_marginLeft="360dp"-->
+<!--        android:checked="false"-->
+<!--        android:textOff="Off"-->
+<!--        android:textOn="On"-->
+<!--        android:layout_marginTop="10dp">-->
+<!--    </androidx.appcompat.widget.SwitchCompat>-->
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Mode Dolar($)"-->
+<!--        android:layout_below="@id/txtmoney"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:textStyle="bold"-->
+<!--        android:fontFamily="casual"-->
+<!--        android:textSize="20dp"-->
+<!--        android:layout_marginLeft="10dp">-->
+
+<!--    </TextView>-->
+
+</RelativeLayout>

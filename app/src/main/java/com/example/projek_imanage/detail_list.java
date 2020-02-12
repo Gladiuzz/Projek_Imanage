@@ -127,18 +127,20 @@ public class detail_list extends AppCompatActivity {
                                     }, 4000);
 
 
-
-                                    fileReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                                        @Override
-                                        public void onSuccess(Uri uri) {
-                                            String gambar = uri.toString();
+                                    if (mGambarUri != null){
+                                        fileReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                            @Override
+                                            public void onSuccess(Uri uri) {
+                                                String gambar = uri.toString();
 
                                                 String id = id_item;
                                                 Item item = new Item(id, Nama_item, Kategori,Deskripsi, Jumlah, Harga, Tanggal, gambar);
                                                 dbr.child(id).setValue(item);
 
-                                        }
-                                    });
+                                            }
+                                        });
+                                    }
+
                                     startActivity(new Intent(detail_list.this, btm_navigation.class));
                                 }
                             })
@@ -163,8 +165,6 @@ public class detail_list extends AppCompatActivity {
                             });
                 }
                 else {
-
-
                     String id = id_item;
                     Item item = new Item(id, Nama_item, Kategori,Deskripsi, Jumlah, Harga, Tanggal, gambar_edt);
                     dbr.child(id).setValue(item).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -177,14 +177,12 @@ public class detail_list extends AppCompatActivity {
                                     mProgressBar.setProgress(0);
                                 }
                             }, 4000);
-                            
+
                             Toast.makeText(detail_list.this, "Edit berhasil", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(detail_list.this, btm_navigation.class));
                         }
                     });
                 }
-//
-//
             }
         });
     }

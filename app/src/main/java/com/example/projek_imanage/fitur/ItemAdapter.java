@@ -8,6 +8,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -24,17 +26,20 @@ import com.example.projek_imanage.model.Item;
 import com.squareup.picasso.Picasso;
 
 import java.text.NumberFormat;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder> {
+public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder>{
     private Context mcontext;
     private List<Item> mItems;
+    private List<Item> mItems_full;
     private OnItemClickListener mListener;
 
     public ItemAdapter (Context context, List<Item> items){
         mcontext = context;
         mItems = items;
+        mItems_full = new ArrayList<>(mItems);
     }
 
 
@@ -56,10 +61,6 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
         holder.hargaBarang.setText(formatrupiah.format(itemCurrent.getHarga()));
         Glide.with(mcontext).load(itemCurrent.getGambar_Barang()).into(holder.imgBarang);
 
-
-
-
-
     }
 
 
@@ -68,6 +69,37 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
     public int getItemCount() {
         return mItems.size();
     }
+
+    public void fiterList(ArrayList<Item> filterList) {
+        mItems = filterList;
+        notifyDataSetChanged();
+    }
+
+//    @Override
+//    public Filter getFilter() {
+//        return itemFilter;
+//    }
+//
+//    private Filter itemFilter = new Filter() {
+//        @Override
+//        protected FilterResults performFiltering(CharSequence charSequence) {
+//            List<Item> filterdItem = new ArrayList<>();
+//
+//            if (charSequence == null || charSequence.length() == 0){
+//                filterdItem.addAll(mItems_full);
+//            }
+//            else {
+//                String filterPattern = charSequence.toString().toLowerCase().trim();
+//            }
+//        }
+//
+//        @Override
+//        protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+//
+//        }
+//    };
+
+
 
 
     public class ItemViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnCreateContextMenuListener
@@ -138,6 +170,8 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
     public void setOnItemClickListener(OnItemClickListener listener){
         mListener = listener;
     }
+
+
 
 
 

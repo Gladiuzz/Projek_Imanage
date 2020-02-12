@@ -105,7 +105,7 @@ public class profileitem extends Fragment {
                 String user_name = dataSnapshot.child("name").getValue(String.class);
                 username.setText(user_name);
 
-                if (dataSnapshot.child("avatar").equals("t")){
+                if (dataSnapshot.child("avatar").equals("")){
                     Glide.with(getContext()).load(R.drawable.am56pz2_460swp).into(img_avatar);
                 }
                 else{

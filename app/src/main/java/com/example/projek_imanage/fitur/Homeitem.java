@@ -41,7 +41,7 @@ public class Homeitem extends Fragment implements HomeAdapter.OnItemClickListene
     private FirebaseStorage mStorage;
     private FirebaseUser currentUser;
     private ValueEventListener mDBListener;
-    private DatabaseReference dbr;
+    private DatabaseReference dbr_item, dbr_user;
     private RecyclerView mDataList;
     private HomeAdapter mAdapter;
     private List<Item> mItems;
@@ -74,13 +74,14 @@ public class Homeitem extends Fragment implements HomeAdapter.OnItemClickListene
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser currentUser = mAuth.getCurrentUser();
         id = currentUser.getUid();
-        dbr = FirebaseDatabase.getInstance().getReference("Item").child(id);
+        dbr_item = FirebaseDatabase.getInstance().getReference("Item").child(id);
+        dbr_user = FirebaseDatabase.getInstance().getReference("Users").child(id);
 
 
 //        String email = currentUser.getEmail();
 //        getEmail.setText(email);
 
-        mDBListener = dbr.addValueEventListener(new ValueEventListener() {
+        mDBListener = dbr_item.limitToFirst(5).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
@@ -114,11 +115,7 @@ public class Homeitem extends Fragment implements HomeAdapter.OnItemClickListene
 
 
     private void loadUserInformation(){
-        mAuth = FirebaseAuth.getInstance();
-        currentUser = mAuth.getCurrentUser();
-        String id = mAuth.getUid();
-        dbr = FirebaseDatabase.getInstance().getReference("Users").child(id);
-        dbr.addValueEventListener(new ValueEventListener() {
+        dbr_user.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 String user_name = dataSnapshot.child("name").getValue(String.class);
@@ -169,7 +166,7 @@ public class Homeitem extends Fragment implements HomeAdapter.OnItemClickListene
         dataRef.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
-                dbr.child(selectedKey).removeValue();
+                dbr_item.child(selectedKey).removeValue();
                 Toast.makeText(getContext(), "test", Toast.LENGTH_SHORT).show();
             }
         }).addOnFailureListener(new OnFailureListener() {
@@ -200,6 +197,6 @@ public class Homeitem extends Fragment implements HomeAdapter.OnItemClickListene
     @Override
     public void onDestroy() {
         super.onDestroy();
-        dbr.removeEventListener(mDBListener);
+        dbr_item.removeEventListener(mDBListener);
     }
 }

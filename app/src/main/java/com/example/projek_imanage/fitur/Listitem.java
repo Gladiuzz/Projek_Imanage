@@ -5,9 +5,12 @@ import android.content.Intent;
 import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
@@ -64,6 +67,7 @@ public class Listitem extends Fragment implements ItemAdapter.OnItemClickListene
     private FirebaseAuth mAuth;
 
     private TextView ttl_item;
+    private EditText search_bar;
     private int countItems;
 
     private String id;
@@ -79,6 +83,7 @@ public class Listitem extends Fragment implements ItemAdapter.OnItemClickListene
         mDataList = (view.findViewById(R.id.data_barang));
         mprogressCircle = (view.findViewById(R.id.progress_circle));
         ttl_item = (view.findViewById(R.id.no_item));
+        search_bar = (view.findViewById(R.id.search));
         mDataList.setHasFixedSize(true);
         mDataList.setLayoutManager(new LinearLayoutManager(getContext()));
 
@@ -98,6 +103,8 @@ public class Listitem extends Fragment implements ItemAdapter.OnItemClickListene
         FirebaseUser currentUser = mAuth.getCurrentUser();
         id = currentUser.getUid();
         dbr = FirebaseDatabase.getInstance().getReference("Item").child(id);
+
+        ItemSearch();
 
 
 
@@ -138,7 +145,10 @@ public class Listitem extends Fragment implements ItemAdapter.OnItemClickListene
         });
 
         return view;
+
     }
+
+
 
 
     @Override
@@ -223,6 +233,37 @@ public class Listitem extends Fragment implements ItemAdapter.OnItemClickListene
     public void onDestroy() {
         super.onDestroy();
         dbr.removeEventListener(mDBListener);
+    }
+
+    private void ItemSearch() {
+        search_bar.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                filter(editable.toString());
+            }
+        });
+    }
+
+    private void filter(String text) {
+        ArrayList<Item> filterList = new ArrayList<>();
+
+        for (Item item : mItems){
+            if (item.getNama_Barang().toLowerCase().contains(text.toLowerCase())){
+                filterList.add(item);
+            }
+        }
+
+        mAdapter.fiterList(filterList);
     }
 }
 

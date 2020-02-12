@@ -10,6 +10,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.TextUtils;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
@@ -17,6 +18,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.projek_imanage.fitur.profileitem;
 import com.example.projek_imanage.model.User;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -45,12 +47,13 @@ public class edt_profile extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private StorageReference storageReference;
     private FirebaseUser currentUser;
+    private User users;
 
     private static int PICK_IMAGE = 123;
     private Uri mGambarUri;
     private CircleImageView mAvatar;
 
-    private String id;
+    private String id, avatar_user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +65,7 @@ public class edt_profile extends AppCompatActivity {
         currentUser = mAuth.getCurrentUser();
         id = mAuth.getUid();
         dbr = FirebaseDatabase.getInstance().getReference("Users");
+
 
         component();
         loadUserInformation();
@@ -98,11 +102,16 @@ public class edt_profile extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 String user_name = dataSnapshot.child("name").getValue(String.class);
+
+
                 edtNama.setText(user_name);
+                Glide.with(getApplicationContext()).load(dataSnapshot.child("avatar").getValue(String.class)).into(mAvatar);
 
                 if (currentUser != null){
                     if (currentUser.getEmail() != null){
                         edtEmail.setText(currentUser.getEmail());
+//                        edtPassword.setText(users.getAvatar());
+
                     }
                 }
             }
@@ -119,56 +128,108 @@ public class edt_profile extends AppCompatActivity {
     }
 
     private void edtProfile(){
+        final String email = edtEmail.getText().toString().trim();
+        final String password = edtPassword.getText().toString().trim();
+        final String name = edtNama.getText().toString().trim();
+
+        if (TextUtils.isEmpty(email)){
+            Toast.makeText(getApplicationContext(), "Enter Email", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        else if (TextUtils.isEmpty(password)){
+            Toast.makeText(getApplicationContext(), "Enter Password", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        else if (TextUtils.isEmpty(name)){
+            Toast.makeText(getApplicationContext(), "Enter nama", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (mGambarUri != null) {
+            final StorageReference imgReference = storageReference.child("img_Avatar").child(id).child("test");
+            UploadTask uploadTask = imgReference.putFile(mGambarUri);
+            uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    id = currentUser.getUid();
 
 
-        final StorageReference imgReference = storageReference.child("img_Avatar").child(id).child("test");
-        UploadTask uploadTask = imgReference.putFile(mGambarUri);
-        uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                id = currentUser.getUid();
+                    imgReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                        @Override
+                        public void onSuccess(Uri uri) {
 
-                final String email = edtEmail.getText().toString().trim();
-                final String password = edtPassword.getText().toString().trim();
+                            String avatar = uri.toString();
 
-                imgReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                    @Override
-                    public void onSuccess(Uri uri) {
-                        String name = edtNama.getText().toString().trim();
-                        String avatar = uri.toString();
+                            User users = new User(id, name, email, password, avatar);
+                            dbr.child(id).setValue(users).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    currentUser.updateEmail(email).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(Void aVoid) {
 
-                        User users = new User(id, name, email, password, avatar);
-                        dbr.child(id).setValue(users).addOnSuccessListener(new OnSuccessListener<Void>() {
-                            @Override
-                            public void onSuccess(Void aVoid) {
-                                currentUser.updateEmail(email).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                    @Override
-                                    public void onSuccess(Void aVoid) {
+                                        }
+                                    });
 
-                                    }
-                                });
+                                    currentUser.updatePassword(password).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(Void aVoid) {
 
-                                currentUser.updatePassword(password).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                    @Override
-                                    public void onSuccess(Void aVoid) {
-
-                                    }
-                                });
-                            }
-                        });
-                        startActivity(new Intent(edt_profile.this, btm_navigation.class));
-                    }
-                });
+                                        }
+                                    });
+                                }
+                            });
+                            startActivity(new Intent(edt_profile.this, btm_navigation.class));
+                        }
+                    });
 
 
 
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(edt_profile.this, "asda", Toast.LENGTH_SHORT).show();
-            }
-        });
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Toast.makeText(edt_profile.this, "asda", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+        else{
+            id = currentUser.getUid();
+
+
+//            Toast.makeText(this, "fuck this", Toast.LENGTH_SHORT).show();
+
+            dbr.child(id).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    String avatar = dataSnapshot.child("avatar").getValue(String.class);
+                    String name = edtNama.getText().toString().trim();
+                    User users = new User(id, name, email, password, avatar);
+                    dbr.child(id).setValue(users).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+//                            Toast.makeText(edt_profile.this, "ganti user berhasil", Toast.LENGTH_SHORT).show();
+
+                            currentUser.updateEmail(email);
+
+                            currentUser.updatePassword(password).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    Toast.makeText(edt_profile.this, "wtf", Toast.LENGTH_LONG).show();
+                                }
+                            });
+                            startActivity(new Intent(edt_profile.this, btm_navigation.class));
+                        }
+                    });
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+        }
+
 
 
 
