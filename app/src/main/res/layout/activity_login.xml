@@ -12,6 +12,15 @@
         android:layout_height="300dp"
         android:background="@color/main_color">
 
+        <com.google.android.gms.common.SignInButton
+            android:id="@+id/sign_in_button"
+            android:layout_below="@id/text5"
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            />
+
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -19,18 +28,10 @@
             android:layout_centerHorizontal="true">
 
             <Button
-                android:id="@+id/image_google"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="18dp"
-                android:clickable="true"
-                android:background="@drawable/group5"/>
-
-            <Button
                 android:id="@+id/image2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@id/image_google"
+                android:layout_marginLeft="220dp"
                 android:background="@drawable/group6" />
         </RelativeLayout>
 
@@ -62,6 +63,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/text2"
+            android:id="@+id/text5"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="35dp"
             android:text="Enter via social networks"

@@ -26,6 +26,7 @@ public class Homeitem extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 //        return super.onCreateView(inflater, container, savedInstanceState);
         return inflater.inflate(R.layout.home_item, container, false);
+
     }
 
 
