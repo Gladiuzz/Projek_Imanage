@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <RelativeLayout
+        android:id="@+id/atas"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:background="@color/main_color">
+
+
+
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="70dp"
+            android:layout_marginBottom="11dp"
+            android:text="Forgot Password"
+            android:textColor="@android:color/white"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/text2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textView"
+            android:layout_centerHorizontal="true"
+            android:text="Please input You Email"
+            android:textColor="@android:color/white"
+            android:textSize="14dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/text2"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="35dp"
+            android:text="To Send Password Confirmation"
+            android:textColor="@android:color/white" />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/bawah"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:layout_below="@id/atas">
+
+
+        <RelativeLayout
+            android:id="@+id/username_n_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="65dp">
+
+            <EditText
+                android:id="@+id/email_forgot"
+                android:layout_width="298dp"
+                android:layout_height="37dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/border1"
+                android:textAppearance="?android:textAppearanceSmall"
+                android:padding="11dp"
+                android:layout_marginBottom="25dp"
+                android:layout_marginTop="25dp"
+                android:hint="Email"
+                tools:layout_editor_absoluteY="279dp" />
+
+
+        </RelativeLayout>
+
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:id="@+id/forgot_password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="218dp">
+
+                <Button
+                    android:id="@+id/btn_submit"
+                    android:layout_width="266dp"
+                    android:layout_height="41dp"
+                    android:layout_centerHorizontal="true"
+                    android:background="@color/main_color"
+                    android:text="Send Password Confirmation"
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/forgot_password"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                >
+
+                <TextView
+                    android:id="@+id/tdk_pnya_acc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="have an account?" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/tdk_pnya_acc"
+                    android:text="  Sign In"
+                    android:textColor="#3C82FF" />
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>

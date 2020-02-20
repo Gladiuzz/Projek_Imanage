@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "736131518626",
+    "firebase_url": "https://imanageauth.firebaseio.com",
+    "project_id": "imanageauth",
+    "storage_bucket": "imanageauth.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:736131518626:android:f9d3632aad1b9274dd47fb",
+        "android_client_info": {
+          "package_name": "com.example.projek_imanage"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "736131518626-e3oovq8as0ll9l2t2b19j86ghtc0bktm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.projek_imanage",
+            "certificate_hash": "c941be3576403fa01d94f567eef84e3d594c5757"
+          }
+        },
+        {
+          "client_id": "736131518626-fv826dochme1donk4dlkaupdd3utc6pn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAs0mbd_9QBwmB9lcY6zoWnfVzYhjjp4I8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "736131518626-fv826dochme1donk4dlkaupdd3utc6pn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

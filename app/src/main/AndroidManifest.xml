@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.projek_imanage">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".fitur.trans_scan"></activity>
+        <activity android:name=".Scan_QR"></activity>
+
+        <meta-data
+            android:name="com.google.firebase.ml.vision.DEPENDENCIES"
+            android:value="barcode" />
+
+        <activity android:name=".add_Categories" />
+        <activity
+            android:name=".categories"
+            android:label="@string/title_activity_categories"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".edt_profile" />
+        <activity android:name=".detail_list" />
+        <activity android:name=".list_det" />
+        <activity android:name=".fitur.TransactionItem2" />
+        <activity android:name=".forgot_pass" />
+        <activity android:name=".fitur.profileitem" />
+        <activity android:name=".registeractivity" />
+        <activity android:name=".loginactivity" />
+        <activity android:name=".btm_navigation" />
+        <activity android:name=".Setting" />
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <RelativeLayout
+        android:id="@+id/atas"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:background="@color/main_color">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="210dp"
+            android:layout_centerHorizontal="true">
+
+            <Button
+                android:id="@+id/image_google"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="18dp"
+                android:clickable="true"
+                android:background="@drawable/group5"/>
+
+            <Button
+                android:id="@+id/image2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/image_google"
+                android:background="@drawable/group6" />
+        </RelativeLayout>
+
+
+
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="70dp"
+            android:layout_marginBottom="11dp"
+            android:text="Login Now"
+            android:textColor="@android:color/white"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/text2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textView"
+            android:layout_centerHorizontal="true"
+            android:text="Please login to continue using for app"
+            android:textColor="@android:color/white"
+            android:textSize="14dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/text2"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="35dp"
+            android:text="Enter via social networks"
+            android:textColor="@android:color/white" />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/bawah"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:layout_below="@id/atas">
+
+
+        <RelativeLayout
+            android:id="@+id/username_n_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="65dp">
+
+            <EditText
+                android:id="@+id/email_lgn"
+                android:layout_width="298dp"
+                android:layout_height="37dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/border1"
+                android:textAppearance="?android:textAppearanceSmall"
+                android:padding="11dp"
+                android:layout_marginBottom="25dp"
+                android:layout_marginTop="12dp"
+                android:inputType="textEmailAddress"
+                android:hint="Email"
+                tools:layout_editor_absoluteY="279dp" />
+
+            <EditText
+                android:id="@+id/password_lgn"
+                android:layout_width="298dp"
+                android:layout_height="37dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="20dp"
+                android:layout_below="@id/email_lgn"
+                android:background="@drawable/border1"
+                android:textAppearance="?android:textAppearanceSmall"
+                android:hint="password"
+                android:inputType="textPassword"
+                android:padding="11dp" />
+
+            <TextView
+                android:id="@+id/forgot_password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/password_lgn"
+                android:text="Forgot Password?"
+                android:layout_marginTop="10dp"
+                android:textColor="#3C82FF"
+                android:clickable="true"
+                android:layout_alignLeft="@id/password_lgn"/>
+        </RelativeLayout>
+
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:id="@+id/layout_signup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="218dp">
+
+<!--                <Button-->
+<!--                    android:id="@+id/login"-->
+<!--                    android:layout_width="266dp"-->
+<!--                    android:layout_height="41dp"-->
+<!--                    android:layout_centerHorizontal="true"-->
+<!--                    android:background="@color/main_color"-->
+<!--                    android:text="Log in"-->
+<!--                    android:textAllCaps="false"-->
+<!--                    android:textColor="@android:color/white"-->
+<!--                    android:textSize="16sp" />-->
+
+                <Button
+                    android:id="@+id/login"
+                    android:layout_width="266dp"
+                    android:layout_height="41dp"
+                    android:layout_centerHorizontal="true"
+                    android:background="@color/main_color"
+                    android:text="Log In"
+                    android:textColor="@android:color/white"
+                    android:textAllCaps="false"
+                    android:textSize="16sp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/layout_signup"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                >
+
+                <TextView
+                    android:id="@+id/tdk_pnya_acc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Dont have an account?" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/tdk_pnya_acc"
+                    android:text="  Sign Up"
+                    android:textColor="#3C82FF" />
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:text="Or use your account"
+                android:textColor="@color/colorPrimary" />
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>

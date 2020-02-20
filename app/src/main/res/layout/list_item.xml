@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f0f0f0">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/main_color"
+        android:id="@+id/search_Box">
+
+        <EditText
+            android:id="@+id/search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/search"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="10sp"
+            android:paddingLeft="8dp"
+            android:drawableLeft="@drawable/ic_search_black_24dp"
+            android:hint="Search Item"
+            android:textSize="12dp"/>
+
+        <TextView
+            android:id="@+id/total_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10sp"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/search"
+            android:text="Item : "
+            android:textColor="@android:color/white"/>
+
+        <TextView
+            android:id="@+id/no_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/total_item"
+            android:layout_centerVertical="true"
+            android:text=""
+            android:textColor="@android:color/white" />
+    </RelativeLayout>
+
+
+    <ProgressBar
+        android:id="@+id/progress_circle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/data_barang"
+        android:layout_width="match_parent"
+        android:layout_height="490dp"
+        android:layout_below="@id/search_Box"
+        android:layout_marginTop="10dp">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+</RelativeLayout>

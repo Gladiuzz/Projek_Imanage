@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="@layout/activity_nav_drawer">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/navigation_setting"
+            android:icon="@drawable/ic_settings_black_24dp"
+            android:title="Setting" />
+        <item
+            android:id="@+id/navigation_logout"
+            android:icon="@drawable/ic_block_black_24dp"
+            android:title="Log Out" />
+    </group>
+
+
+</menu>

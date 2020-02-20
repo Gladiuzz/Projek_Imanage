@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="25dp"
+            android:textColor="#8510D8"
+            android:textStyle="bold"
+            android:text="Apakah anda yakin ingin mengurangi"
+            android:textSize="20sp" />
+
+    </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/layout_main"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border1"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:padding="15dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/trans_nama"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="25dp"
+                    android:textColor="#8510D8"
+                    android:textStyle="bold"
+                    android:layout_gravity="center"
+                    android:text="Nama Item"
+                    android:textSize="20sp" />
+
+
+                <TextView
+                    android:id="@+id/trans_kategori"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="13dp"
+                    android:hint="Kategori:"
+                    android:textSize="12dp"/>
+
+
+
+                <TextView
+                    android:id="@+id/trans_harga"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="13dp"
+                    android:hint="Harga :"
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:id="@+id/tgl_transaksi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="13dp"
+                    android:hint="Tanggal dimasukan :"
+                    android:textSize="12dp" />
+
+
+
+                <EditText
+                    android:id="@+id/trans_jumlah"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="13dp"
+                    android:hint="Jumlah Item yang ingin dikurang"
+                    android:textSize="12dp"
+/>
+
+
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+
+
+        <Button
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/layout_main"
+            android:id="@+id/btn_yes"
+            android:layout_width="130dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/border1"
+            android:text="Yes"
+            android:textColor="#6A0DAD" />
+
+
+
+
+
+
+
+
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/trans_gambar"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:src="@drawable/ic_add_a_photo_black_24dp" />
+
+
+
+
+</RelativeLayout>

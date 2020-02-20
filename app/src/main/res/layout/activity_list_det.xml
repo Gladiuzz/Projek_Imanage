@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".list_det">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#f0f0f0"
+            tools:context=".list_det">
+
+            <ImageView
+                android:id="@+id/img_det"
+                android:layout_width="match_parent"
+                android:layout_height="350dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/am56pz2_460swp"/>
+
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_arrow_back_black_24dp"
+                android:clickable="true"
+                android:layout_margin="15dp"
+                android:focusable="true" />
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="320dp"
+                android:layout_alignParentBottom="true"
+                android:background="@drawable/border_detail"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:padding="15dp">
+
+                <TextView
+                    android:id="@+id/nama_det"
+                    android:layout_width="230dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/main_color"
+                    android:textStyle="bold"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Nama Item"
+                    android:textSize="30sp" />
+
+                <TextView
+                    android:id="@+id/kategori_det"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/nama_det"
+                    android:layout_marginStart="16dp"
+                    android:text="Kategori"
+                    android:textSize="14sp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/item_det"
+                    android:text="Deskripsi Barang"
+                    android:textSize="16sp"
+                    android:textColor="@android:color/black"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginStart="16dp"
+                    android:textAllCaps="false"
+                    android:layout_below="@id/kategori_det" />
+
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/harga_det"
+                    android:layout_marginTop="8dp">
+
+                    <TextView
+                        android:id="@+id/jumlah_barang"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Quantity"
+                        android:textSize="12sp"
+                        android:textAlignment="textEnd"
+
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="12dp"/>
+
+
+
+                    <TextView
+                        android:id="@+id/quantity_barang"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Jumlah Barang : "
+                        android:textSize="12sp"
+                        android:layout_toLeftOf="@id/jumlah_barang"/>
+
+                </RelativeLayout>
+
+
+
+                <TextView
+                    android:id="@+id/harga_det"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Harga"
+                    android:textSize="18sp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginTop="20dp"/>
+
+
+
+
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+
+
+
+</RelativeLayout>

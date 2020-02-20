@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:id="@+id/yay"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/layout_addGambar"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:clickable="true">
+
+        <ImageView
+            android:id="@+id/img_barang"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_add_a_photo_black_24dp" />
+
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/form1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layout_addGambar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp">
+
+        <EditText
+            android:id="@+id/edtnama_barang"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_rectangle_15"
+            android:hint="Masukan Nama Barang"
+            android:paddingLeft="12dp"
+            android:textSize="13dp" />
+
+        <Spinner
+            android:id="@+id/edtkategori_barang"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/edtnama_barang"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/ic_rectangle_15" />
+
+        <EditText
+            android:id="@+id/edtquantity"
+            android:layout_width="336dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/edtkategori_barang"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/ic_rectangle_15"
+            android:hint="Masukan Jumlah Quantity"
+            android:inputType="number"
+            android:paddingLeft="12dp"
+            android:textSize="13dp" />
+
+        <EditText
+            android:id="@+id/edtharga"
+            android:layout_width="336dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/edtquantity"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/ic_rectangle_15"
+            android:hint="Masukan Harga"
+            android:inputType="number"
+            android:paddingLeft="12dp"
+            android:textSize="13dp" />
+
+        <EditText
+            android:id="@+id/edttanggal"
+            android:layout_width="336dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/edtharga"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/ic_rectangle_15"
+            android:clickable="true"
+            android:drawableRight="@drawable/ic_date_range_black_24dp"
+            android:paddingLeft="12dp"
+            android:hint="Tanggal"
+            android:textSize="13dp" />
+
+        <EditText
+            android:id="@+id/edtdetail"
+            android:layout_width="336dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/edttanggal"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/ic_rectangle_15"
+            android:hint="Masukan Detail barang"
+            android:paddingLeft="12dp"
+            android:textSize="13dp" />
+
+
+    </RelativeLayout>
+
+
+    <Button
+        android:id="@+id/btn_add"
+        android:layout_width="273dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/form1"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:layout_margin="20sp"
+        android:background="@android:color/white"
+        android:text="Add Item"
+        android:textColor="#6A0DAD" />
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+
+</RelativeLayout>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/ic_home_i_manage_24dp"
+        android:enabled="true"
+        android:title="Home" />
+
+    <item
+        android:id="@+id/navigation_list"
+        android:icon="@drawable/ic_assignment_i_manage_24dp"
+        android:title="List" />
+
+    <item
+        android:id="@+id/navigation_transaction"
+        android:icon="@drawable/ic_payment_i_manage_24dp"
+        android:title="Transaction" />
+
+    <item
+        android:id="@+id/navigation_profile"
+        android:icon="@drawable/ic_person_black_24dp"
+        android:title="Profile" />
+
+
+</menu>
